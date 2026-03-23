@@ -1,0 +1,92 @@
+"use client";
+import React, { useState } from "react";
+import { Items } from "../components/items";
+import Image from "next/image";
+import { AddOutline,RemoveSharp } from "react-ionicons";
+import Logo from "../../public/images/ChatGPT Image Jan 9, 2026, 10_54_57 PM.png";
+
+export default function Allm({
+  image,
+  name,
+  price,
+  description,
+  Count,
+  Minus,
+}: {
+  Image: string;
+  name: string,
+  price: string;
+  description: string;
+  Count: boolean;
+  Minus:boolean;
+}) {
+  const [vissible, setVissible] = useState(0);
+  const [remove, setRemove] = useState(false);
+  return (
+    <>
+      <div className="overeflow-hidden listproduct p-1.5 " onLoad={() => {}}>
+        <div className="overflow-hidden relative ">
+          <div className="bg-[#0f0f0f] overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-amber-400">
+            <Image
+              src={image}
+              alt={""}
+              width={130}
+              height={130}
+              placeholder="blur"
+              blurDataURL=""
+              className="w-full min-h-[150px] object-cover rounded-2xl"
+            />
+          </div>
+          <div className="z-10 absolute bottom-1 right-1 flex flex-row-reverse bg-white rounded-full">
+            <button
+              onClick={() => {
+                setVissible(vissible + 1);
+                Count();
+              }}
+              className="rounded-full  w-10 h-10 flex items-center justify-center bg-[#dcae32]"
+            >
+              <AddOutline
+                color={"#000000"}
+                title={"add to cart"}
+                height="30px"
+                width="30px"
+              />
+            </button>
+            {vissible === 0 ? (null) : (
+              <button
+                onClick={() => {
+                  setVissible(vissible - 1);
+                  Minus();
+                }}
+                className="rounded-full  w-10 h-10 flex items-center justify-center"
+              >
+                <RemoveSharp
+                  color={"#000000"}
+                  title={"add to cart"}
+                  height="30px"
+                  width="30px"
+                />
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="gap-1 flex flex-col">
+          <p className="font-extrabold font-mono text-2xl text-emerald-400">
+            {" "}
+            #{price}
+          </p>
+          <p className="font-semibold text-lg text-gray-100">{name}</p>
+          <p className="font-serif text-sm text-gray-400 text-justify">
+            {description}
+          </p>
+          <a
+            href="#"
+            className="text-white font-bold text-center self-end self-end hover:bg-emerald-500 bg-emerald-600 w-30 p-1 rounded-full transition"
+          >
+            buy now
+          </a>
+        </div>
+      </div>
+    </>
+  );
+}

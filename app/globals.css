@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  // Foundation / Backgrounds
+  --ocean-abyss: #050505;
+  --ocean-deep: #0B1A16;
+  --harbor-charcoal: #1A1F1D;
+  --port-slate: #0f0f0f;
+  --coal-dark: #111111;
+  
+  // Gold accent
+  --gold-premium: #D4AF37;
+  --gold-light: #dcae32;
+  --gold-muted: #c9a227;
+  --gold-border: rgba(212,175,55,0.25);
+  --gold-glow: rgba(212,175,55,0.4);
+  
+  // Blue accent
+  --ocean-primary: #1D4ED8;
+  --ocean-light: #3B82F6;
+  --ocean-dark: #1E40AF;
+  
+  // Tertiary
+  --trust-green: #10B981;
+  --teal-accent: #0F766E;
+  --alert-red: #EF4444;
+  
+  // Text
+  --text-bright: #FFFFFF;
+  --text-soft: #F5F5F5;
+  --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
+  --text-gray-dark: #1F2937;
+  
+  // Surface
+  --surface-white: #FFFFFF;
+  --surface-glass: rgba(255,255,255,0.04);
+  --border-light: rgba(255,255,255,0.1);
+  
+  // Default to dark theme
+  --background: #050505;
+  --foreground: #F5F5F5;
+}
+
+@theme inline {
+  // Colors mapped to CSS variables
+  --color-ocean-abyss: var(--ocean-abyss);
+  --color-ocean-deep: var(--ocean-deep);
+  --color-harbor-charcoal: var(--harbor-charcoal);
+  --color-port-slate: var(--port-slate);
+  --color-coal-dark: var(--coal-dark);
+  
+  --color-gold-premium: var(--gold-premium);
+  --color-gold-light: var(--gold-light);
+  --color-gold-muted: var(--gold-muted);
+  --color-gold-border: var(--gold-border);
+  --color-gold-glow: var(--gold-glow);
+  
+  --color-ocean-primary: var(--ocean-primary);
+  --color-ocean-light: var(--ocean-light);
+  --color-ocean-dark: var(--ocean-dark);
+  
+  --color-trust-green: var(--trust-green);
+  --color-teal-accent: var(--teal-accent);
+  --color-alert-red: var(--alert-red);
+  
+  --color-text-bright: var(--text-bright);
+  --color-text-soft: var(--text-soft);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+  --color-text-gray-dark: var(--text-gray-dark);
+  
+  --color-surface-white: var(--surface-white);
+  --color-surface-glass: var(--surface-glass);
+  --color-border-light: var(--border-light);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+  --font-display: var(--font-montserrat);
+  --font-serif: var(--font-playfair);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.sshadow {
+  box-shadow: 0px 4px 20px rgba(212, 175, 55, 0.4);
+} /* Subtle shadow */
+
+.cards {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(12px);
+  display: grid;
+  grid-row: auto;
+  grid-template-rows: 2fr auto 1fr auto;
+}
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.listp {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.listproduct {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.reason {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.reasonlist {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
