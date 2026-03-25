@@ -50,11 +50,11 @@ const Shop = () => {
   };
 
   return (
-    <div className="cursor-auto select-none text-white min-h-screen items-center overflow-hidden justify-center bg-[#050505] font-sans no-scrollbar">
+    <div className="cursor-auto select-none text-text-bright min-h-screen items-center overflow-hidden justify-center bg-ocean-abyss font-sans no-scrollbar">
       <Carti carts={cartNumber} />
       <div className="flex">
         <div className="hidden"></div>
-        <div className="hidden w-50 h-screen lg:flex md:fixed left-0 top-0 z-10 bg-linear-to-r from-[#0B1A16] to-[#050505] flex-col">
+        <div className="hidden w-50 h-screen lg:flex md:fixed left-0 top-0 z-10 bg-linear-to-r from-ocean-deep to-ocean-abyss flex-col">
           <div className="w-full h-25 flex items-center justify-center ">
             <Image
               src={Logo}
@@ -66,12 +66,12 @@ const Shop = () => {
           </div>
 
           <div className="w-full h-full mt-5 flex items-center justify-center flex-col gap-2 scroll-smooth no-scrollbar">
-            <h3 className="font-bold font-mono">Categories</h3>
+            <h3 className="font-bold font-mono text-gold-premium">Categories</h3>
             {links.map((link) => (
               <button
                 className={
                   "w-full rounded-4xl" +
-                  (link.type === currentLink ? " border bg-white" : "")
+                  (link.type === currentLink ? " border bg-gold-premium" : "")
                 }
                 key={link.name}
                 onClick={() => {
@@ -80,7 +80,7 @@ const Shop = () => {
               >
                 <p
                   className={
-                    link.type === currentLink ? "text-black" : "text-white"
+                    link.type === currentLink ? "text-ocean-abyss" : "text-text-bright"
                   }
                 >
                   {link.name}
@@ -98,7 +98,7 @@ const Shop = () => {
               height={100}
               className="lg:hidden"
             />
-            <h1 className="font-extrabold font-mono sm:text-3xl ">
+            <h1 className="font-extrabold font-mono sm:text-3xl text-gold-premium">
               LIGOWINSHOPER
             </h1>
           </div>
@@ -111,7 +111,7 @@ const Shop = () => {
               <button
                 className={
                   "px-4 py-2 rounded-4xl shrink-0" +
-                  (link.type === currentLink ? " border bg-white" : "")
+                  (link.type === currentLink ? " border bg-gold-premium" : "")
                 }
                 key={link.name}
                 onClick={() => {
@@ -120,7 +120,7 @@ const Shop = () => {
               >
                 <p
                   className={
-                    link.type === currentLink ? "text-black" : "text-white"
+                    link.type === currentLink ? "text-ocean-abyss" : "text-text-bright"
                   }
                 >
                   {link.name}
@@ -129,15 +129,15 @@ const Shop = () => {
             ))}
           </div>
           <div className="w-full h-full flex flex-col justify-center items-center">
-            <div className="w-[80%] text-center self-center h-15 m-5 overflow-hidden p-5 flex flex-row rounded-full bg-gray-800 gap-2 justify-center items-center">
+            <div className="w-[80%] text-center self-center h-15 m-5 overflow-hidden p-5 flex flex-row rounded-full bg-port-slate gap-2 justify-center items-center">
               <input
                 placeholder="search products"
-                className="w-full h-13 border-0"
+                className="w-full h-13 border-0 bg-transparent text-text-bright placeholder:text-text-muted"
               />
-              <button className="w-13 h-13 hover:bg-gray-700 rounded-full flex items-center justify-center">
+              <button className="w-13 h-13 hover:bg-harbor-charcoal rounded-full flex items-center justify-center">
                 <SearchCircleOutline
                   title="Search"
-                  color="white"
+                  color="#F5F5F5"
                   width="30px"
                   height="30px"
                   classname="h-full w-full"

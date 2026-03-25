@@ -4,7 +4,6 @@ import Image from "next/image";
 import hero from "@/public/images/ship.png";
 import * as motion from "motion/react-client";
 import { useMotionValue } from "motion/react";
-import { mont } from '@/app/ui/fonts'
 
 const Hero = (): JSX.Element => {
   const x = useMotionValue(0);
@@ -16,26 +15,26 @@ const Hero = (): JSX.Element => {
     return () => clearTimeout(timeout);
   });
   return (
-    <section className="h-screen relative w-screen overflow-hidden flex flex-col-reverse lg:flex-row justify-center items-center  gap-1 sad:gap-2 bg-linear-to-r from-[#050505] to-[#0B1A16]">
+    <section className="md:h-screen pb-5 relative w-screen overflow-hidden flex flex-col-reverse lg:flex-row justify-center items-center  gap-1 sad:gap-2 bg-linear-to-r from-ocean-abyss to-ocean-deep">
       {/* <div className="w-90 h-90 rounded-full blur-lg bg-amber-50 absol"  /> */}
       <motion.div
         className="flex h-[40%] md:h-screen lg:px-20 flex-col pt-10 gap-3 sm:justify-center items-center sm:mt-10 md:w-[70%]"
         initial={{ opacity: -5, scale: 0.9 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, ease: [0, 0.71, 0.2, 1.01] }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: false, amount: "some" }}
+        transition={{ duration: 1, delay: 0.2, ease: [0, 0.71, 0.2, 1.01] }}
         layout
       >
-        <p className=" text-montserat max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white text-justify">
+        <p className="text-montserrat max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-text-bright text-justify">
           Your Trusted China-To-Nigeria Shopping & Import Partner
         </p>
-        <p className="max-w-2xl text-justify mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-800">
+        <p className="max-w-2xl text-justify mb-6 font-light text-text-muted lg:mb-8 md:text-lg lg:text-xl">
           We import, procure,and deliver quality products from China to Nigeria
           - shoes, bags clothes, power banks, smart gadgets and more. delivered
           to your doorstep.{" "}
         </p>
         <a
-          className="shadow z-20 bg-[#D4AF37] hover:bg-blue-700 transition duration-300 ease-in text-[#050505] font-bold py-2 px-4 rounded-full mt-2.5 sm:text-lg text-md "
+          className="shadow z-20 bg-gold-premium hover:bg-ocean-primary transition duration-300 ease-in text-ocean-abyss font-bold py-2 px-4 rounded-full mt-2.5 sm:text-lg text-md "
           href="/shop"
         >
           Start Shipping Now

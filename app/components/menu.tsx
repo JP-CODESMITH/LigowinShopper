@@ -48,13 +48,11 @@ const Menus = () => {
           </nav>
         </>
       ) : (
-        <motion.nav
-          className={ menu ? "w-[80%] p-9.5 fixed top-0 right-0 bg-white h-screen z-30" : " transition-all ease-linear transform = 'translateX(180px) duration-500 delay-75'" }
-          initial={{ opacity: 0, x: 100 }} // Reduced x distance for mobile
+          <motion.nav
+          className={ menu ? "w-[80%] p-9.5 fixed top-0 right-0 bg-harbor-charcoal h-screen z-30 border-l border-gold-border" : " transition-all ease-linear transform = 'translateX(180px) duration-500 delay-75'" }
+          initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          // 'some' ensures it triggers easier on small screens
           viewport={{ once: false, amount: "some" }}
-          // Reduced delay so it feels responsive
           transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
           layout
         >
@@ -66,7 +64,7 @@ const Menus = () => {
           >
             {}
             <CloseOutline
-              color={"#000000"}
+              color={"#D4AF37"}
               title={"cancel menu"}
               height="40px"
               width="40px"
@@ -78,16 +76,16 @@ const Menus = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenu(false)} // Close menu when link is clicked
+                onClick={() => setMenu(false)}
                 className={`text-3xl border font-semibold grid grid-cols-[2fr_1fr] h-12  rounded-full w-full gap-4 pl-10 grid-rows-1 items-center justify-center my-5 transition-transform transform ease-in-out ${
                   pathname === link.href
-                    ? "text-white bg-black rounded-full"
-                    : "text-gray-800"
+                    ? "text-ocean-abyss bg-gold-premium rounded-full"
+                    : "text-text-bright"
                 }`}
               >
-                <p>{link.label}</p>
+                <p className="text-2xl">{link.label}</p>
                 <IconComponent
-                  color={pathname === link.href ? "#fff" : "grey"}
+                  color={pathname === link.href ? "#050505" : "#D4AF37"}
                   height="30px"
                   width="30px"
                   className="font-extrabold"
@@ -98,32 +96,32 @@ const Menus = () => {
           })}
           <div className="w-full flex justify-center items-center flex-col gap-0">
             <Image src={Logo} alt="hello" className="w-100" />
-            <h5 className="font-extrabold text-3xl text-black">
+            <h5 className="font-extrabold text-3xl text-gold-premium">
               LigowinShopper
             </h5>
           </div>
         </motion.nav>
       )}
       <div className="hidden md:flex justify-end">
-        <nav className="fixed gap-5 right-5 z-50 mt-6 flex w-[500px] px-8 py-2.5 rounded-full bg-white shadow-md overflow-hidden">
+        <nav className="fixed gap-5 right-5 z-50 mt-6 flex w-[500px] px-8 py-2.5 rounded-full bg-harbor-charcoal shadow-md overflow-hidden border border-gold-border">
           {navLinks.map((link) => {
             const IconComponent = link.icon;
             return (
               <div
-                className="flex rounded-full items-center sm:hover:bg-gray-200 hover:rounded-full gap-1 transition duration-300"
+                className="flex rounded-full items-center sm:hover:bg-gold-premium hover:rounded-full gap-1 transition duration-300"
                 key={link.href}
               >
                 <Link
                   href={link.href}
-                  onClick={() => setMenu(false)} // Close menu when link is clicked
-                  className={` sm:hover:bg-gray-200 hover:rounded-full  text-1xl font-semibold flex gap-1 justify-center items-center pl-3 pr-3 transition duration-300 ${
+                  onClick={() => setMenu(false)}
+                  className={` sm:hover:bg-gold-premium hover:rounded-full  text-1xl font-semibold flex gap-1 justify-center items-center pl-3 pr-3 transition duration-300 ${
                     pathname === link.href
-                      ? "text-white w-full bg-black rounded-full"
-                      : "text-gray-800"
+                      ? "text-ocean-abyss w-full bg-gold-premium rounded-full"
+                      : "text-text-bright"
                   }`}
                 >
                   <IconComponent
-                    color={pathname === link.href ? "#fff" : "#000"}
+                    color={pathname === link.href ? "#050505" : "#D4AF37"}
                     height="20px"
                     width="20px"
                     className="font-extrabold"

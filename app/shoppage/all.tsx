@@ -26,7 +26,7 @@ export default function Allm({
     <>
       <div className="overeflow-hidden listproduct p-1.5 " onLoad={() => {}}>
         <div className="overflow-hidden relative ">
-          <div className="bg-[#0f0f0f] overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-amber-400">
+          <div className="bg-port-slate overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-gold-premium">
             <Image
               src={image}
               alt={""}
@@ -37,16 +37,16 @@ export default function Allm({
               className="w-full min-h-[150px] object-cover rounded-2xl"
             />
           </div>
-          <div className="z-10 absolute bottom-1 right-1 flex flex-row-reverse bg-white rounded-full">
+          <div className="z-10 absolute bottom-1 right-1 flex flex-row-reverse bg-surface-white rounded-full">
             <button
               onClick={() => {
                 setVissible(vissible + 1);
                 Count();
               }}
-              className="rounded-full  w-10 h-10 flex items-center justify-center bg-[#dcae32]"
+              className="rounded-full  w-10 h-10 flex items-center justify-center bg-gold-light"
             >
               <AddOutline
-                color={"#000000"}
+                color={"#050505"}
                 title={"add to cart"}
                 height="30px"
                 width="30px"
@@ -61,7 +61,7 @@ export default function Allm({
                 className="rounded-full  w-10 h-10 flex items-center justify-center"
               >
                 <RemoveSharp
-                  color={"#000000"}
+                  color={"#050505"}
                   title={"add to cart"}
                   height="30px"
                   width="30px"
@@ -71,17 +71,17 @@ export default function Allm({
           </div>
         </div>
         <div className="gap-1 flex flex-col">
-          <p className="font-extrabold font-mono text-2xl text-emerald-400">
+          <p className="font-extrabold font-mono text-2xl text-trust-green">
             {" "}
             #{price}
           </p>
-          <p className="font-semibold text-lg text-gray-100">{name}</p>
-          <p className="font-serif text-sm text-gray-400 text-justify">
+          <p className="font-semibold text-lg text-text-soft">{name}</p>
+          <p className="font-serif text-sm text-text-muted text-justify">
             {description}
           </p>
           <a
             href="#"
-            className="text-white font-bold text-center self-end self-end hover:bg-emerald-500 bg-emerald-600 w-30 p-1 rounded-full transition"
+            className="text-text-bright font-bold text-center self-end self-end hover:bg-trust-green bg-trust-green w-30 p-1 rounded-full transition"
           >
             buy now
           </a>

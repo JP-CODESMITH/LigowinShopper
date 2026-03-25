@@ -9,12 +9,11 @@ type CartProps = {
 const Carti = ({ carts }: CartProps) => {
   return (
     <button
-      // onClick={Click}
-      className="fixed right-6 bottom-6 z-20 rounded-full border-2 p-1 flex flex-row justify-center items-center bg-white"
+      className="fixed right-6 bottom-6 z-20 rounded-full border-2 border-gold-premium p-1 flex flex-row justify-center items-center bg-harbor-charcoal"
     >
-      <p className="font-bold text-1xl text-black">{carts} Carts</p>
+      <p className="font-bold text-1xl text-gold-premium">{carts} Carts</p>
       <CartOutline
-        color={"#000000"}
+        color={"#D4AF37"}
         title={"CartOutline"}
         height="30px"
         width="30px"

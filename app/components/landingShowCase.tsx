@@ -6,7 +6,7 @@ import Link from "next/link";
 import { CaretForwardOutline, CartOutline } from "react-ionicons";
 
 const LandingShowCase = (): JSX.Element => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
   const categories = [
     {
@@ -57,7 +57,7 @@ const LandingShowCase = (): JSX.Element => {
   const scrollNext = () => {
     if (containerRef.current) {
       const card = containerRef.current.querySelector(".cards");
-      if (card) {
+      if (card instanceof HTMLElement) {
         const cardWidth = card.offsetWidth;
         const gap = 16; // gap-4 in Tailwind = 1rem = 16px
         containerRef.current.scrollBy({
@@ -68,7 +68,7 @@ const LandingShowCase = (): JSX.Element => {
     }
   };
   return (
-    <section className="h-screen w-full flex flex-col justify-center items-center headlist bg-[#050505]">
+    <section className="h-screen w-full flex flex-col justify-center items-center headlist bg-ocean-abyss">
       <div />
       <p className="md:text-4xl text-1xl text-white font-bold text-center ">
         {" "}
@@ -84,7 +84,7 @@ const LandingShowCase = (): JSX.Element => {
           <div
             key={index}
             id={category.ids}
-            className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 shrink-0"
+            className="rounded-lg border border-gold-border bg-coal-dark p-6 shadow-sm shrink-0"
           >
             <div className="h-56 w-full">
               <a href="#">
@@ -98,37 +98,35 @@ const LandingShowCase = (): JSX.Element => {
 
             <div className="pt-6">
               <div className="mb-4 flex items-center justify-between">
-                <span className="rounded bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                <span className="rounded bg-ocean-primary/20 px-2.5 py-0.5 text-xs font-medium text-gold-light">
                   Up to 35% off
                 </span>
               </div>
 
               <a
                 href="#"
-                className="text-lg font-semibold text-gray-900 hover:underline dark:text-white"
+                className="text-lg font-semibold text-white hover:underline"
               >
                 {category.title}
               </a>
 
               <div className="mt-2 flex items-center gap-2">
-                <div className="flex text-yellow-400">★★★★★</div>
-                <p className="text-sm font-medium text-gray-900 dark:text-white">
-                  4.9
-                </p>
-                <p className="text-sm text-gray-500">(4,775)</p>
+                <div className="flex text-gold-premium">★★★★★</div>
+                <p className="text-sm font-medium text-white">4.9</p>
+                <p className="text-sm text-harbor-charcoal">(4,775)</p>
               </div>
 
-              <ul className="mt-2  gap-4 text-sm text-gray-500">
+              <ul className="mt-2  gap-4 text-sm text-harbor-charcoal">
                 <li>{category.description}</li>
                 <li>Best Price</li>
               </ul>
 
               <div className="mt-4 flex items-center justify-between">
-                <p className="text-2xl font-extrabold text-gray-900 dark:text-white">
+                <p className="text-2xl font-extrabold text-gold-premium">
                   $899
                 </p>
 
-                <button className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700">
+                <button className="rounded-lg bg-ocean-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-ocean-primary/80">
                   Add to cart
                 </button>
               </div>
@@ -137,7 +135,7 @@ const LandingShowCase = (): JSX.Element => {
         ))}
       </div>
       <button
-        className="bg-white rounded-full p-5 absolute z-120 right-0 flex justify-center items-center"
+        className="bg-gold-premium rounded-full p-5 absolute z-120 right-0 flex justify-center items-center"
         onClick={scrollNext}
       >
         <CaretForwardOutline
@@ -149,7 +147,7 @@ const LandingShowCase = (): JSX.Element => {
       </button>
       <Link
         href="/shop"
-        className="text-xl flex gap-2.5 pt-3 pl-10 pr-10 pb-3 bg-[#D4AF37] hover:bg-blue-700 transition duration-300 ease-in text-[#050505] font-bold py-2 px-4 rounded-full mt-2.5 sm:text-lg text-md"
+        className="text-xl flex gap-2.5 pt-3 pl-10 pr-10 pb-3 bg-gold-premium hover:bg-ocean-primary transition duration-300 ease-in text-ocean-abyss font-bold py-2 px-4 rounded-full mt-2.5 sm:text-lg text-md"
       >
         <CartOutline
           color={"#00000"}

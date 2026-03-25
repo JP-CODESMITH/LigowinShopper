@@ -11,9 +11,9 @@ const Faq = () => {
 				className="flex flex-row justify-between"
 				onClick={() => setOpen(!open ? true : false)}
 			>
-				<p className="text-lg font-semibold">What is ligowinshopper</p>
+				<p className="text-lg font-semibold text-gold-premium">What is ligowinshopper</p>
 				<ChevronDownOutline
-					color={"#00000"}
+					color={"#D4AF37"}
 					title={""}
 					height="25px"
 					width="25px"
@@ -24,7 +24,7 @@ const Faq = () => {
 					}
 				/>
 			</button>{" "}
-			<hr className="w-full text-gray-800" />
+			<hr className="w-full border-border-light" />
 			{open && (
 				<motion.div
 					className="gap-8 flex flex-col mt-2 transition-all ease-in-out"
@@ -34,7 +34,7 @@ const Faq = () => {
 					transition={{ duration: 3, ease: [0, 0.71, 0.2, 1.01] }}
 					layout
 				>
-					<p>
+					<p className="text-text-soft">
 						Flowbite is an open-source library of interactive
 						components built on top of Tailwind CSS including
 						buttons, dropdowns, modals, navbars, and more. Check out
@@ -42,7 +42,7 @@ const Faq = () => {
 						developing websites even faster with components on top
 						of Tailwind CSS.
 					</p>
-					<hr className="w-full text-gray-800 font-extrabold" />
+					<hr className="w-full border-border-light" />
 				</motion.div>
 			)}
 		</div>
