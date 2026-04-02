@@ -5,36 +5,46 @@ import ShippingAnimation from "../components/service";
 import * as motion from "motion/react-client";
 const testimonials = [
   {
-    name: "Micheal Gough",
+    name: "Chinedu Okafor",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "I ordered power banks and phone accessories from China through Ligowin Shopper, and everything arrived in perfect condition. The process was smooth and transparent. Highly recommended!",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    from: "Phone Accessories Dealer, Lagos",
   },
   {
-    name: "Micheal Gough",
+    name: "Aisha Bello",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "What I love most is the reliability. They helped me source quality bags at a very good price, and delivery was faster than I expected. This platform is a game changer.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    from: "Fashion Entrepreneur, Abuja",
   },
   {
-    name: "Micheal Gough",
+    name: "Emeka Nwosu",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "Ligowin Shopper made importing from China so easy. No stress, no hidden charges. I’ve used them multiple times and they’ve never disappointed me.",
+    image: "https://randomuser.me/api/portraits/men/65.jpg",
+    from: "Online Vendor, Onitsha",
   },
   {
-    name: "Micheal Gough",
+    name: "Fatima Usman",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "Customer support is top-notch. They guided me through my first order and kept me updated until delivery. I felt very secure using their service.",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    from: "Small Business Owner, Kano",
+  },
+  {
+    name: "Samuel Adeyemi",
+    words:
+      "The prices are very competitive compared to local markets. I now import most of my gadgets through Ligowin Shopper and save more profit.",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    from: "Electronics Seller, Ibadan",
+  },
+  {
+    name: "Blessing Eze",
+    words:
+      "Fast delivery and trusted quality. I’ve recommended Ligowin Shopper to my friends because they truly deliver what they promise.",
+    image: "https://randomuser.me/api/portraits/women/12.jpg",
+    from: "Retailer, Enugu",
   },
 ];
 
@@ -76,15 +86,15 @@ const page = () => {
           <h2 className="text-2xl font-extrabold font-mono text-gold-premium">
             Our Story
           </h2>
-          <div className="text-lg text-text-muted font-bold leading-relaxed space-y-1">
-            <p className="text-justify">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-text-soft leading-relaxed space-y-5">
+            <p className="text-base sm:text-lg md:text-xl">
               It started with frustration — the kind that many Nigerians know
               too well. You find the perfect product online or through a
               supplier in China. The price is good, the opportunity is there,
               and you’re ready to grow your business… but then reality sets in:
             </p>
 
-            <ul className="list-disc pl-10 space-y-1">
+            <ul className="list-disc pl-5 sm:pl-8 space-y-2 text-base sm:text-lg">
               <li>Who do you trust?</li>
               <li>Will the goods arrive?</li>
               <li>
@@ -93,51 +103,54 @@ const page = () => {
               </li>
             </ul>
 
-            <p className="text-justify">
+            <p className="text-base sm:text-lg md:text-xl">
               For many people, that’s where the journey ends — not because the
               opportunity isn’t real, but because the process is too risky, too
               confusing, and too stressful.
             </p>
 
-            <p className="text-justify">We’ve been there.</p>
+            <p className="font-semibold text-base sm:text-lg">
+              We’ve been there.
+            </p>
 
-            <p className="text-justify">
+            <p className="text-base sm:text-lg md:text-xl">
               Ligowin was born out of that exact struggle — the late nights
               worrying about shipments, the uncertainty of dealing with overseas
               suppliers, and the disappointment when things didn’t go as
-              planned. We realized that too many dreams were being cut short
-              simply because importing felt like a gamble.
+              planned.
             </p>
 
-            <p className="text-justify font-extrabold">
+            <p className="text-base sm:text-lg md:text-xl">
+              We realized that too many dreams were being cut short simply
+              because importing felt like a gamble.
+            </p>
+
+            <p className="text-gold-premium font-extrabold text-lg sm:text-xl md:text-2xl text-center">
               So we decided to change that.
             </p>
 
-            <p className="text-justify">
+            <p className="text-base sm:text-lg md:text-xl">
               We built Ligowin to be the bridge — a reliable, transparent, and
-              dependable link between China and Nigeria. A service where you
-              don’t have to second-guess every step or fear losing your
-              investment.
+              dependable link between China and Nigeria.
             </p>
 
-            <p className="text-justify">
+            <p className="text-base sm:text-lg md:text-xl">
               With us, you’re not just shipping goods. You’re gaining a partner
               who understands what’s at stake — your business, your money, your
               growth.
             </p>
 
-            <p className="text-justify">
+            <p className="text-base sm:text-lg md:text-xl">
               Today, every package we deliver represents something bigger:
             </p>
 
-            <ul className="list-disc pl-10 space-y-1">
+            <ul className="list-disc pl-5 sm:pl-8 space-y-2 text-base sm:text-lg">
               <li>A business expanding</li>
               <li>A goal getting closer</li>
               <li>A risk turned into a reward</li>
             </ul>
-            <br />
 
-            <p className="text-center font-extrabold pt-4">
+            <p className="text-center font-extrabold text-lg sm:text-xl md:text-2xl pt-6 text-text-bright">
               And this is just the beginning.
             </p>
           </div>

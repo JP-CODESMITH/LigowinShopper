@@ -1,9 +1,10 @@
 "use client";
-import React, { JSX, use, useRef, useState } from "react";
+import React, { JSX, useRef, useState } from "react";
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import Link from "next/link";
 import { CaretForwardOutline, CartOutline } from "react-ionicons";
+import { adverts } from "@/public/advert/advert";
 
 const LandingShowCase = (): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,9 +71,9 @@ const LandingShowCase = (): JSX.Element => {
   return (
     <section className="h-screen w-full flex flex-col justify-center items-center headlist bg-ocean-abyss">
       <div />
-      <p className="md:text-4xl text-1xl text-white font-bold text-center ">
+      <p className="md:text-4xl text-2xl text-white font-bold text-center font-mono">
         {" "}
-        Available products
+        Arriving <span className="text-gold-premium">Soon</span>
       </p>
       {/* <Scrollview></Scrollview> */}
       <div
@@ -80,18 +81,20 @@ const LandingShowCase = (): JSX.Element => {
         ref={containerRef}
       >
         {/* Each card needs 'flex-shrink-0' to keep its width */}
-        {categories.map((category, index) => (
+        {adverts.map((adverts, index) => (
           <div
             key={index}
-            id={category.ids}
+            id={adverts.ids}
             className="rounded-lg border border-gold-border bg-coal-dark p-6 shadow-sm shrink-0"
           >
             <div className="h-56 w-full">
               <a href="#">
-                <img
+                <Image
                   className="mx-auto h-full object-contain rounded-2xl"
-                  src={category.imageUrl}
-                  alt={category.title}
+                  src={adverts.path}
+                  alt={adverts.name}
+                  width={300}
+                  
                 />
               </a>
             </div>
@@ -99,7 +102,7 @@ const LandingShowCase = (): JSX.Element => {
             <div className="pt-6">
               <div className="mb-4 flex items-center justify-between">
                 <span className="rounded bg-ocean-primary/20 px-2.5 py-0.5 text-xs font-medium text-gold-light">
-                  Up to 35% off
+                  {adverts.time}
                 </span>
               </div>
 
@@ -107,7 +110,7 @@ const LandingShowCase = (): JSX.Element => {
                 href="#"
                 className="text-lg font-semibold text-white hover:underline"
               >
-                {category.title}
+                {adverts.name}
               </a>
 
               <div className="mt-2 flex items-center gap-2">
@@ -116,8 +119,8 @@ const LandingShowCase = (): JSX.Element => {
                 <p className="text-sm text-harbor-charcoal">(4,775)</p>
               </div>
 
-              <ul className="mt-2  gap-4 text-sm text-harbor-charcoal">
-                <li>{category.description}</li>
+              <ul className="mt-2  gap-4 text-sm text-gray-400">
+                <li>{adverts.description}</li>
                 <li>Best Price</li>
               </ul>
 
@@ -126,25 +129,17 @@ const LandingShowCase = (): JSX.Element => {
                   $899
                 </p>
 
-                <button className="rounded-lg bg-ocean-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-ocean-primary/80">
-                  Add to cart
-                </button>
+                <a
+                  href=""
+                  className="rounded-lg bg-ocean-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-ocean-primary/80"
+                >
+                  Preorder Now
+                </a>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <button
-        className="bg-gold-premium rounded-full p-5 absolute z-120 right-0 flex justify-center items-center"
-        onClick={scrollNext}
-      >
-        <CaretForwardOutline
-          color={"#00000"}
-          title={"next"}
-          height="30px"
-          width="30px"
-        />
-      </button>
       <Link
         href="/shop"
         className="text-xl flex gap-2.5 pt-3 pl-10 pr-10 pb-3 bg-gold-premium hover:bg-ocean-primary transition duration-300 ease-in text-ocean-abyss font-bold py-2 px-4 rounded-full mt-2.5 sm:text-lg text-md"

@@ -8,39 +8,48 @@ import Faq from "./components/faq";
 import * as motion from "motion/react-client";
 const testimonials = [
   {
-    name: "Micheal Gough",
+    name: "Chinedu Okafor",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "I ordered power banks and phone accessories from China through Ligowin Shopper, and everything arrived in perfect condition. The process was smooth and transparent. Highly recommended!",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    from: "Phone Accessories Dealer, Lagos",
   },
   {
-    name: "Micheal Gough",
+    name: "Aisha Bello",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "What I love most is the reliability. They helped me source quality bags at a very good price, and delivery was faster than I expected. This platform is a game changer.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    from: "Fashion Entrepreneur, Abuja",
   },
   {
-    name: "Micheal Gough",
+    name: "Emeka Nwosu",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "Ligowin Shopper made importing from China so easy. No stress, no hidden charges. I’ve used them multiple times and they’ve never disappointed me.",
+    image: "https://randomuser.me/api/portraits/men/65.jpg",
+    from: "Online Vendor, Onitsha",
   },
   {
-    name: "Micheal Gough",
+    name: "Fatima Usman",
     words:
-      "Flowbite is just awesome. It contains tons of predesigned components and pages starting from loginscreen to complex dashboard. Perfect choice for your next SaaS application.",
-    image:
-      "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png",
-    from: "CEO at Google",
+      "Customer support is top-notch. They guided me through my first order and kept me updated until delivery. I felt very secure using their service.",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    from: "Small Business Owner, Kano",
+  },
+  {
+    name: "Samuel Adeyemi",
+    words:
+      "The prices are very competitive compared to local markets. I now import most of my gadgets through Ligowin Shopper and save more profit.",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    from: "Electronics Seller, Ibadan",
+  },
+  {
+    name: "Blessing Eze",
+    words:
+      "Fast delivery and trusted quality. I’ve recommended Ligowin Shopper to my friends because they truly deliver what they promise.",
+    image: "https://randomuser.me/api/portraits/women/12.jpg",
+    from: "Retailer, Enugu",
   },
 ];
-
 export default function Home(): JSX.Element {
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
@@ -54,34 +63,59 @@ export default function Home(): JSX.Element {
     
       <section className="bg-harbor-charcoal">
         <motion.div
-          className="max-w-7xl px-4 py-8 mx-auto text-center lg:py-4 lg:px-2"
-          
+          className="max-w-7xl px-6 py-16 mx-auto text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <dl className="grid max-w-3xl gap-8 mx-auto sm:grid-cols-3">
-            <div className="flex flex-col items-center justify-center">
-              <dt className="mb-2 text-3xl md:text-4xl font-extrabold text-text-bright">
-                73M+
+        
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text-bright mb-4">
+            Trusted by <span className="text-gold-premium">Shoppers Across Nigeria</span>
+          </h2>
+          <p className="text-text-muted mb-12 max-w-2xl mx-auto">
+            We’ve helped hundreds of customers import quality products from China with speed, trust and reliability.
+          </p>
+        
+          {/* Stats */}
+          <dl className="grid gap-8 sm:grid-cols-3 max-w-4xl mx-auto">
+        
+            {/* 1 */}
+            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-harbor-charcoal border border-gold-border hover:shadow-[0_0_20px_rgba(212,175,55,0.15)] transition duration-300">
+              <dt className="mb-2 text-3xl md:text-4xl font-extrabold text-gold-premium font-mono">
+                5K+
               </dt>
-              <dd className="font-light text-text-muted">developers</dd>
+              <dd className="text-text-muted text-sm">
+                Successful Deliveries
+              </dd>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <dt className="mb-2 text-3xl md:text-4xl font-extrabold text-text-bright">
-                1B+
+        
+            {/* 2 */}
+            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-harbor-charcoal border border-ocean-primary/30 hover:shadow-[0_0_20px_rgba(29,78,216,0.2)] transition duration-300">
+              <dt className="mb-2 text-3xl md:text-4xl font-extrabold text-ocean-light font-mono">
+                1K+
               </dt>
-              <dd className="font-light text-text-muted">contributors</dd>
+              <dd className="text-text-muted text-sm">
+                Active Customers
+              </dd>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <dt className="mb-2 text-3xl md:text-4xl font-extrabold text-text-bright">
-                4M+
+        
+            {/* 3 */}
+            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-harbor-charcoal border border-trust-green/30 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] transition duration-300">
+              <dt className="mb-2 text-3xl md:text-4xl font-extrabold text-trust-green font-mono">
+                99%
               </dt>
-              <dd className="font-light text-text-muted">organizations</dd>
+              <dd className="text-text-muted text-sm">
+                Customer Satisfaction
+              </dd>
             </div>
+        
           </dl>
         </motion.div>
       </section>
       <section className="w-screen my-10 p-5 flex flex-col bg-port-slate">
-        <h1 className="text-center text-3xl font-extrabold text-text-bright">
-          How it Works
+        <h1 className="text-center text-3xl font-extrabold text-text-bright mb-3">
+          How it <span className="text-gold-premium">Works</span>
         </h1>
         <div className="md:flex justify-center items-center w-screen flex-1 flex-row-reverse">
           <motion.div
@@ -143,7 +177,7 @@ export default function Home(): JSX.Element {
               </li>
 
               <li className="mb-10 ms-6">
-                <span className="absolute -start-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-harbor-charcoal ring-8 ring-ocean-abyss">
+                <span className="absolute -inset-s-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-harbor-charcoal ring-8 ring-ocean-abyss">
                   <svg
                     className="h-3 w-3 text-text-muted"
                     aria-hidden="true"
@@ -172,7 +206,7 @@ export default function Home(): JSX.Element {
               </li>
 
               <li className="mb-10 ms-6">
-                <span className="absolute -start-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-harbor-charcoal ring-8 ring-ocean-abyss">
+                <span className="absolute -inset-s-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-harbor-charcoal ring-8 ring-ocean-abyss">
                   <svg
                     className="h-3 w-3 text-text-muted"
                     aria-hidden="true"
@@ -221,9 +255,7 @@ export default function Home(): JSX.Element {
       </section>
       <LandingShowCase />
       <section className="w-screen flex flex-col items-center pt-10">
-        <p className="text-2xl md:text-4xl text-text-bright text-center font-extrabold mb-10">
-          WHY CHOOSE LIGOWIN SHOPPER?
-        </p>
+        
         <motion.div  initial={{ opacity: 0, y:50 }} // Reduced x distance for mobile
         whileInView={{ opacity: 1, y: 0 }}
         // 'some' ensures it triggers easier on small screens
@@ -259,9 +291,7 @@ export default function Home(): JSX.Element {
       </section>
       <section className="w-screen h-auto">
         <div className="py-8 px-4 mx-auto max-w-7xl sm:py-16 lg:px-6 flex items-center flex-col w-full h-full gap-4 md:gap-8">
-          <h2 className="mb-8 text-2xl tracking-tight font-extrabold text-text-bright">
-            Frequently asked questions
-          </h2>
+          
           <Faq />
         </div>
       </section>

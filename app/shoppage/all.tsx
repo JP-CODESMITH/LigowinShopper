@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Items } from "../components/items";
 import Image from "next/image";
-import { AddOutline,RemoveSharp } from "react-ionicons";
+import { AddOutline, RemoveSharp } from "react-ionicons";
 import Logo from "../../public/images/ChatGPT Image Jan 9, 2026, 10_54_57 PM.png";
 
 export default function Allm({
@@ -14,17 +14,20 @@ export default function Allm({
   Minus,
 }: {
   Image: string;
-  name: string,
+  name: string;
   price: string;
   description: string;
   Count: boolean;
-  Minus:boolean;
+  Minus: boolean;
 }) {
   const [vissible, setVissible] = useState(0);
   const [remove, setRemove] = useState(false);
   return (
     <>
-      <div className="overeflow-hidden listproduct p-1.5 " onLoad={() => {}}>
+      <div
+        className="overeflow-hidden listproduct p-1.5 grid-rows-(3fr_1fr_1fr_1fr)"
+        onLoad={() => {}}
+      >
         <div className="overflow-hidden relative ">
           <div className="bg-port-slate overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-gold-premium">
             <Image
@@ -34,7 +37,7 @@ export default function Allm({
               height={130}
               placeholder="blur"
               blurDataURL=""
-              className="w-full min-h-[150px] object-cover rounded-2xl"
+              className="w-full max-h-[400px] object-cover rounded-2xl"
             />
           </div>
           <div className="z-10 absolute bottom-1 right-1 flex flex-row-reverse bg-surface-white rounded-full">
@@ -52,7 +55,7 @@ export default function Allm({
                 width="30px"
               />
             </button>
-            {vissible === 0 ? (null) : (
+            {vissible === 0 ? null : (
               <button
                 onClick={() => {
                   setVissible(vissible - 1);

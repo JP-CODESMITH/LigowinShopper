@@ -1,52 +1,103 @@
 "use client";
 import React, { useState } from "react";
 import { ChevronDownOutline } from "react-ionicons";
-import * as motion from "motion/react-client";
+import { motion } from "framer-motion";
 
-const Faq = () => {
-	const [open, setOpen] = useState(false);
-	return (
-		<div className="w-80 sm:w-[70%] flex flex-col gap-2">
-			<button
-				className="flex flex-row justify-between"
-				onClick={() => setOpen(!open ? true : false)}
-			>
-				<p className="text-lg font-semibold text-gold-premium">What is ligowinshopper</p>
-				<ChevronDownOutline
-					color={"#D4AF37"}
-					title={""}
-					height="25px"
-					width="25px"
-					className={
-						open
-							? "rotate-180 transition-all ease-in-out transform = 'rotate(180)'"
-							: " transition-all ease-linear transform = 'rotate(180)"
-					}
-				/>
-			</button>{" "}
-			<hr className="w-full border-border-light" />
-			{open && (
-				<motion.div
-					className="gap-8 flex flex-col mt-2 transition-all ease-in-out"
-					initial={{ opacity: -5, y: -5 }}
-					animate={{ y: 1, opacity: 1 }}
-					whileInView={{ opacity: 1 }}
-					transition={{ duration: 3, ease: [0, 0.71, 0.2, 1.01] }}
-					layout
-				>
-					<p className="text-text-soft">
-						Flowbite is an open-source library of interactive
-						components built on top of Tailwind CSS including
-						buttons, dropdowns, modals, navbars, and more. Check out
-						this guide to learn how to get started and start
-						developing websites even faster with components on top
-						of Tailwind CSS.
-					</p>
-					<hr className="w-full border-border-light" />
-				</motion.div>
-			)}
-		</div>
-	);
-};
+const faqData = [
+  {
+    question: "What is Ligowin Shopper?",
+    answer:
+      "Ligowin Shopper is a China-to-Nigeria import platform that helps you buy, ship, and receive products directly from China with ease.",
+  },
+  {
+    question: "How long does delivery take?",
+    answer:
+      "Delivery typically takes 7–21 days depending on the shipping method and product type.",
+  },
+  {
+    question: "Is payment secure?",
+    answer:
+      "Yes, all transactions are protected with secure and encrypted payment systems.",
+  },
+  {
+    question: "Can I order any product from China?",
+    answer:
+      "Yes, you can request almost any product, and we’ll help source and deliver it for you.",
+  },
+  {
+    question: "Do you offer doorstep delivery?",
+    answer:
+      "Absolutely, we deliver directly to your location anywhere in Nigeria.",
+  },
+];
 
-export default Faq;
+export default function Faq() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  return (
+    <section className="bg-ocean-abyss py-16 px-6">
+      
+      {/* Title */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-text-bright">
+          Frequently Asked <span className="text-gold-premium">Questions</span>
+        </h2>
+        <p className="text-text-muted mt-3">
+          Everything you need to know about Ligowin Shopper
+        </p>
+      </div>
+
+      {/* FAQ List */}
+      <div className="max-w-3xl mx-auto flex flex-col gap-4">
+        {faqData.map((item, index) => {
+          const isOpen = activeIndex === index;
+
+          return (
+            <div
+              key={index}
+              className="border border-border-light rounded-xl bg-harbor-charcoal p-4"
+            >
+              {/* Question */}
+              <button
+                onClick={() => toggle(index)}
+                className="w-full flex justify-between items-center"
+              >
+                <p className="text-sm font-semibold text-gold-premium text-left">
+                  {item.question}
+                </p>
+
+                <ChevronDownOutline
+                  color="#D4AF37"
+                  height="24px"
+                  width="24px"
+                  className={`transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+
+              {/* Answer */}
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isOpen ? "auto" : 0,
+                  opacity: isOpen ? 1 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <p className="text-text-soft mt-3 text-sm leading-relaxed">
+                  {item.answer}
+                </p>
+              </motion.div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

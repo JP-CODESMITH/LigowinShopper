@@ -5,7 +5,7 @@ WORKDIR /app
 FROM base AS deps
 COPY package.json bun.lock* ./
 RUN bun install --frozen-lockfile
-
+ 
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
