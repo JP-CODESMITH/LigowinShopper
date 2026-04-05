@@ -12,13 +12,15 @@ export default function Allm({
   description,
   Count,
   Minus,
+  modal
 }: {
-  Image: string;
+  image: string;
   name: string;
   price: string;
   description: string;
   Count: boolean;
   Minus: boolean;
+  modal: any;
 }) {
   const [vissible, setVissible] = useState(0);
   const [remove, setRemove] = useState(false);
@@ -29,7 +31,7 @@ export default function Allm({
         onLoad={() => {}}
       >
         <div className="overflow-hidden relative ">
-          <div className="bg-port-slate overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-gold-premium">
+          <div className="bg-port-slate overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-gold-premium" onClick={modal}>
             <Image
               src={image}
               alt={""}
