@@ -12,7 +12,8 @@ export default function Allm({
   description,
   Count,
   Minus,
-  modal
+  modal,
+  id
 }: {
   image: string;
   name: string;
@@ -21,6 +22,7 @@ export default function Allm({
   Count: boolean;
   Minus: boolean;
   modal: any;
+  id: string;
 }) {
   const [vissible, setVissible] = useState(0);
   const [remove, setRemove] = useState(false);
@@ -39,23 +41,35 @@ export default function Allm({
               height={130}
               placeholder="blur"
               blurDataURL=""
-              className="w-full max-h-[400px] object-cover rounded-2xl"
+              className="w-full max-h-[300px] object-cover rounded-2xl"
             />
           </div>
-          <div className="z-10 absolute bottom-1 right-1 flex flex-row-reverse bg-surface-white rounded-full">
+          
+        </div>
+        <div className="gap-1 flex flex-col">
+          <p className="font-extrabold font-mono text-2xl text-trust-green">
+            {" "}
+            #{price}
+          </p>
+          <p className="font-extrabold font-mono text-2xl text-trust-green">
+            {" "}
+            #{id}
+          </p>
+          <p className="font-semibold text-lg text-text-soft">{name}</p>
+          <div className=" flex flex-row-reverse bg-surface-white rounded-full w-fit self-end">
             <button
               onClick={() => {
                 setVissible(vissible + 1);
                 Count();
               }}
-              className="rounded-full  w-10 h-10 flex items-center justify-center bg-gold-light"
+              className="rounded-full px-4 h-10 flex items-center justify-center flex-row bg-gold-light"
             >
               <AddOutline
                 color={"#050505"}
                 title={"add to cart"}
                 height="30px"
                 width="30px"
-              />
+              /> Add to cart
             </button>
             {vissible === 0 ? null : (
               <button
@@ -74,22 +88,6 @@ export default function Allm({
               </button>
             )}
           </div>
-        </div>
-        <div className="gap-1 flex flex-col">
-          <p className="font-extrabold font-mono text-2xl text-trust-green">
-            {" "}
-            #{price}
-          </p>
-          <p className="font-semibold text-lg text-text-soft">{name}</p>
-          <p className="font-serif text-sm text-text-muted text-justify">
-            {description}
-          </p>
-          <a
-            href="#"
-            className="text-text-bright font-bold text-center self-end self-end hover:bg-trust-green bg-trust-green w-30 p-1 rounded-full transition"
-          >
-            buy now
-          </a>
         </div>
       </div>
     </>

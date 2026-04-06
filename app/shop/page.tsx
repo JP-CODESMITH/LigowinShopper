@@ -20,6 +20,7 @@ const links = [
   { name: "Vehicle", type: "vehicle" },
   { name: "Furniture", type: "furniture" },
   { name: "Jewelry", type: "jewelry" },
+  { name: "perfume", type: "perfume" },
 ];
 
 const Shop = () => {
@@ -192,6 +193,7 @@ const Shop = () => {
                   price={item.price}
                   name={item.name}
                   description={item.description}
+                  id={item.id}
                   Count={() =>
                     addToCart({
                       name: item.name,
@@ -266,9 +268,9 @@ const Shop = () => {
                     {/* Price - Large and prominent */}
                     <div className="flex items-baseline gap-2 border-b pb-4">
                       <span className="text-3xl sm:text-4xl font-bold text-black">
-                        ${selectedProduct?.price}
+                        #{selectedProduct?.price}
                       </span>
-                      <span className="text-sm text-gray-500">USD</span>
+                      <span className="text-sm text-gray-500">NGN</span>
                     </div>
 
                     {/* Description */}
