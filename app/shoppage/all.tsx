@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Items } from "../components/items";
 import Image from "next/image";
 import { AddOutline, RemoveSharp } from "react-ionicons";
@@ -13,7 +13,7 @@ export default function Allm({
   Count,
   Minus,
   modal,
-  id
+  id,
 }: {
   image: string;
   name: string;
@@ -26,50 +26,57 @@ export default function Allm({
 }) {
   const [vissible, setVissible] = useState(0);
   const [remove, setRemove] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Reset loading state when image prop changes
+  useEffect(() => {
+    setLoading(true);
+  }, [image]);
+
   return (
     <>
-      <div
-        className="overeflow-hidden listproduct p-1.5 grid-rows-(3fr_1fr_1fr_1fr)"
-        onLoad={() => {}}
-      >
-        <div className="overflow-hidden relative ">
-          <div className="bg-port-slate overflow-hidden flex items-center justify-center  border-1 rounded-2xl border-gold-premium" onClick={modal}>
-            <Image
+      <div className="overflow-hidden listproduct p-1.5 grid-rows-(3fr_1fr_1fr_1fr)">
+        <div className="overflow-hidden p-1.5 relative">
+          <div
+            className="bg-port-slate flex items-center justify-center border-1 rounded-2xl border-gold-premium cursor-pointer hover:shadow-lg transition-shadow duration-300"
+            onClick={modal}
+          >
+            {/* Skeleton - only show while loading */}
+            {loading && (
+              <div className="absolute inset-0 animate-pulse bg-gray-300 rounded-2xl z-10" />
+            )}
+            <img
               src={image}
-              alt={""}
-              width={130}
-              height={130}
-              placeholder="blur"
-              blurDataURL=""
-              className="w-full max-h-[300px] object-cover rounded-2xl"
+              alt=""
+              onLoad={() => setLoading(false)}
+              onError={() => setLoading(false)}
+              className={`w-full max-h-[300px] object-cover rounded-2xl transition-opacity duration-500 ${
+                loading ? "opacity-0" : "opacity-100"
+              }`}
             />
           </div>
-          
         </div>
+
         <div className="gap-1 flex flex-col">
-          <p className="font-extrabold font-mono text-2xl text-trust-green">
-            {" "}
+          <p className="font-extrabold font-mono text-xl text-trust-green">
             #{price}
           </p>
-          <p className="font-extrabold font-mono text-2xl text-trust-green">
-            {" "}
-            #{id}
-          </p>
           <p className="font-semibold text-lg text-text-soft">{name}</p>
-          <div className=" flex flex-row-reverse bg-surface-white rounded-full w-fit self-end">
+          <div className="flex flex-row-reverse bg-surface-white rounded-full w-fit self-end gap-1">
             <button
               onClick={() => {
                 setVissible(vissible + 1);
                 Count();
               }}
-              className="rounded-full px-4 h-10 flex items-center justify-center flex-row bg-gold-light"
+              className="rounded-full px-4 h-10 flex items-center justify-center flex-row bg-gold-light hover:bg-gold-premium transition-colors duration-200 active:scale-95 transform"
             >
               <AddOutline
                 color={"#050505"}
                 title={"add to cart"}
                 height="30px"
                 width="30px"
-              /> Add to cart
+              />
+              Add to cart
             </button>
             {vissible === 0 ? null : (
               <button
@@ -77,11 +84,11 @@ export default function Allm({
                   setVissible(vissible - 1);
                   Minus();
                 }}
-                className="rounded-full  w-10 h-10 flex items-center justify-center"
+                className="rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 active:scale-95 transform"
               >
                 <RemoveSharp
                   color={"#050505"}
-                  title={"add to cart"}
+                  title={"remove from cart"}
                   height="30px"
                   width="30px"
                 />

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Logo from "../../public/images/ChatGPT Image Jan 9, 2026, 10_54_57 PM.png";
 import Carti from "../components/cart";
@@ -30,6 +30,7 @@ const Shop = () => {
   const [cartNumber, setCartNumber] = useState(0);
   const [openCart, setOpenCart] = useState(false);
   const [ID, setID] = useState();
+  const [search, setSearch] = useState("");
 
   // Load cart
   useEffect(() => {
@@ -71,28 +72,24 @@ const Shop = () => {
     setCart(updatedCart);
   };
   const decreaseQuantity = (itemName) => {
-  const existing = cart.find((i) => i.name === itemName);
-  if (!existing) return;
+    const existing = cart.find((i) => i.name === itemName);
+    if (!existing) return;
 
-  const newQuantity = (existing.quantity || 1) - 1;
-  
-  // FIXES: Remove when qty reaches 0
-  if (newQuantity <= 0) {
-    setCart(cart.filter((i) => i.name !== itemName));
-  } else {
-    setCart(
-      cart.map((i) =>
-        i.name === itemName ? { ...i, quantity: newQuantity } : i
-      )
-    );
-  }
-};
+    const newQuantity = (existing.quantity || 1) - 1;
+
+    // FIXES: Remove when qty reaches 0
+    if (newQuantity <= 0) {
+      setCart(cart.filter((i) => i.name !== itemName));
+    } else {
+      setCart(
+        cart.map((i) =>
+          i.name === itemName ? { ...i, quantity: newQuantity } : i,
+        ),
+      );
+    }
+  };
 
   // Filter products
-  const filteredProducts =
-    currentLink === "all"
-      ? products
-      : products.filter((item) => item.type === currentLink);
 
   const handleClose = () => {
     setSellect(null);
@@ -110,8 +107,25 @@ const Shop = () => {
     };
   }, [sellect]);
 
-  const selectedProduct = filteredProducts.find((p) => p.path === sellect);
-
+  const filteredData = useMemo(() => {
+    const query = search.toLowerCase();
+    
+    // Step 1: filter by category
+    const filteredProducts =
+    currentLink === "all"
+    ? products
+    : products.filter((item) => item.type === currentLink);
+    
+    // Step 2: filter by search
+    return filteredProducts.filter((item) => {
+      const name = item.name?.toLowerCase() || "";
+      const description = item.description?.toLowerCase() || "";
+      
+      return name.includes(query) || description.includes(query);
+    });
+  }, [search, currentLink, products]);
+  const selectedProduct = filteredData.find((p) => p.path === sellect);
+  
   return (
     <div className="min-h-screen bg-ocean-abyss text-text-bright font-sans">
       {/* Cart Icon */}
@@ -177,8 +191,10 @@ const Shop = () => {
           {/* Search */}
           <div className="w-[90%] mx-auto my-5 flex bg-port-slate rounded-full px-4 py-2">
             <input
+            value={search}
               placeholder="Search products"
               className="flex-1 bg-transparent outline-none"
+              onChange={(e)=>setSearch(e.target.value)}
             />
             <SearchCircleOutline color="#F5F5F5" width="25px" />
           </div>
@@ -186,8 +202,8 @@ const Shop = () => {
           {/* Products */}
 
           <div className="listp">
-            {filteredProducts.map((item, index) => (
-              <div key={index} >
+            {filteredData.map((item, index) => (
+              <div key={index}>
                 <Allm
                   image={item.path}
                   price={item.price}
@@ -204,7 +220,6 @@ const Shop = () => {
                   Minus={() => decreaseQuantity(item.name)}
                   modal={() => setSellect(item.path)}
                 />
-                
               </div>
             ))}
           </div>
@@ -243,13 +258,11 @@ const Shop = () => {
                 {/* LEFT SIDE - Product Image */}
                 <div className="relative bg-gray-50 flex items-center justify-center min-h-[300px] sm:min-h-[400px] md:min-h-[600px] p-4 sm:p-8 rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
                   <div className="relative w-full h-full min-h-[300px] sm:min-h-[400px]">
-                    <Image
+                    <img
                       src={sellect}
                       alt={selectedProduct?.description || "Product image"}
                       fill
                       className="object-contain p-2 sm:p-4"
-                      priority
-                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 </div>
