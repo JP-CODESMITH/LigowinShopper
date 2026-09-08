@@ -1,36 +1,20 @@
-// app/ui/fonts.ts
 import {
-  Inter,
-  Montserrat,
-  Playfair_Display,
-  JetBrains_Mono,
+  Plus_Jakarta_Sans,
+  Space_Grotesk,
 } from "next/font/google";
 
-// Body Font — Clean, readable UI text
-export const inter = Inter({
+// Display / Body Font — Plus Jakarta Sans
+export const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
+
+// Label / UI Font — Space Grotesk
+export const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
-});
-
-// Display Font — Bold headlines & brand statements
-export const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
-  display: "swap",
-});
-
-// Accent Font — Premium serif for emotional moments
-export const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-// Monospace — Prices, codes, technical labels
-export const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
+  variable: "--font-space-grotesk",
 });
