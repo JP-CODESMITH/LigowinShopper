@@ -1,284 +1,313 @@
 import React from "react";
 import Testimonial from "../components/testimonial";
-import Footer from "../components/footers";
+import Footers from "../components/footers";
 import ShippingAnimation from "../components/service";
-import * as motion from "motion/react-client";
+import Link from "next/link";
+
 const testimonials = [
   {
     name: "Chinedu Okafor",
-    words:
-      "I ordered power banks and phone accessories from China through Ligowin Shopper, and everything arrived in perfect condition. The process was smooth and transparent. Highly recommended!",
+    words: "I ordered power banks and phone accessories from China through Ligowin Shopper, and everything arrived in perfect condition. The process was smooth and transparent. Highly recommended!",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
     from: "Phone Accessories Dealer, Lagos",
   },
   {
     name: "Aisha Bello",
-    words:
-      "What I love most is the reliability. They helped me source quality bags at a very good price, and delivery was faster than I expected. This platform is a game changer.",
+    words: "What I love most is the reliability. They helped me source quality bags at a very good price, and delivery was faster than I expected. This platform is a game changer.",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
     from: "Fashion Entrepreneur, Abuja",
   },
   {
     name: "Emeka Nwosu",
-    words:
-      "Ligowin Shopper made importing from China so easy. No stress, no hidden charges. I’ve used them multiple times and they’ve never disappointed me.",
+    words: "Ligowin Shopper made importing from China so easy. No stress, no hidden charges. I've used them multiple times and they've never disappointed me.",
     image: "https://randomuser.me/api/portraits/men/65.jpg",
     from: "Online Vendor, Onitsha",
   },
   {
     name: "Fatima Usman",
-    words:
-      "Customer support is top-notch. They guided me through my first order and kept me updated until delivery. I felt very secure using their service.",
+    words: "Customer support is top-notch. They guided me through my first order and kept me updated until delivery. I felt very secure using their service.",
     image: "https://randomuser.me/api/portraits/women/68.jpg",
     from: "Small Business Owner, Kano",
   },
-  {
-    name: "Samuel Adeyemi",
-    words:
-      "The prices are very competitive compared to local markets. I now import most of my gadgets through Ligowin Shopper and save more profit.",
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
-    from: "Electronics Seller, Ibadan",
-  },
-  {
-    name: "Blessing Eze",
-    words:
-      "Fast delivery and trusted quality. I’ve recommended Ligowin Shopper to my friends because they truly deliver what they promise.",
-    image: "https://randomuser.me/api/portraits/women/12.jpg",
-    from: "Retailer, Enugu",
-  },
 ];
 
-const page = () => {
+const Page = () => {
   return (
-    <div className="cursor-auto select-none text-text-bright min-h-screen items-center overflow-hidden justify-center bg-ocean-abyss font-sans no-scrollbar ">
-      <section className="flex justify-center items-center p-9 w-screen h-screen flex-col gap-5 bg-linear-to-b from-ocean-abyss to-ocean-deep">
-        <motion.h1
-          className="text-3xl font-serif font-extrabold text-gold-premium"
-          initial={{ opacity: -5, y: -5 }}
-          whileInView={{ y: 1, opacity: 1 }}
-          viewport={{ once: false, amount: "some" }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0, 0.71, 0.2, 1.01] }}
-          layout
-        >
-          About LigowinShopper
-        </motion.h1>
-        <motion.p
-          className="text-lg text-justify text-text-soft"
-          initial={{ opacity: -5, y: 5 }}
-          whileInView={{ y: 1, opacity: 1 }}
-          viewport={{ once: false, amount: "some" }}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
-          layout
-        >
-          LigowinShopper helps Nigerians buy products from China and have them
-          delivered safely to their doorstep.
-        </motion.p>
-      </section>
-      <section className="bg-ocean-deep p-9 w-screen flex  justify-center items-center  ">
-        <motion.div
-          className="flex flex-col gap-5 justify-center items-center mb-10"
-          initial={{ opacity: 0, y: -5 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: "some" }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          layout
-        >
-          <h2 className="text-2xl font-extrabold font-mono text-gold-premium">
-            Our Story
-          </h2>
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-text-soft leading-relaxed space-y-5">
-            <p className="text-base sm:text-lg md:text-xl">
-              It started with frustration — the kind that many Nigerians know
-              too well. You find the perfect product online or through a
-              supplier in China. The price is good, the opportunity is there,
-              and you’re ready to grow your business… but then reality sets in:
-            </p>
+    <div className="cursor-auto select-none text-on-surface min-h-screen items-center overflow-hidden justify-center bg-bg-warm-white font-sans no-scrollbar">
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden bg-bg-warm-white pb-16 pt-20 px-4 lg:px-6">
+        <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none -z-10"></div>
+        <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] rounded-full bg-primary-container/10 blur-3xl pointer-events-none -z-10"></div>
 
-            <ul className="list-disc pl-5 sm:pl-8 space-y-2 text-base sm:text-lg">
-              <li>Who do you trust?</li>
-              <li>Will the goods arrive?</li>
-              <li>
-                What about customs, delays, hidden charges — or worse, losing
-                your money entirely?
-              </li>
-            </ul>
-
-            <p className="text-base sm:text-lg md:text-xl">
-              For many people, that’s where the journey ends — not because the
-              opportunity isn’t real, but because the process is too risky, too
-              confusing, and too stressful.
-            </p>
-
-            <p className="font-semibold text-base sm:text-lg">
-              We’ve been there.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl">
-              Ligowin was born out of that exact struggle — the late nights
-              worrying about shipments, the uncertainty of dealing with overseas
-              suppliers, and the disappointment when things didn’t go as
-              planned.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl">
-              We realized that too many dreams were being cut short simply
-              because importing felt like a gamble.
-            </p>
-
-            <p className="text-gold-premium font-extrabold text-lg sm:text-xl md:text-2xl text-center">
-              So we decided to change that.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl">
-              We built Ligowin to be the bridge — a reliable, transparent, and
-              dependable link between China and Nigeria.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl">
-              With us, you’re not just shipping goods. You’re gaining a partner
-              who understands what’s at stake — your business, your money, your
-              growth.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl">
-              Today, every package we deliver represents something bigger:
-            </p>
-
-            <ul className="list-disc pl-5 sm:pl-8 space-y-2 text-base sm:text-lg">
-              <li>A business expanding</li>
-              <li>A goal getting closer</li>
-              <li>A risk turned into a reward</li>
-            </ul>
-
-            <p className="text-center font-extrabold text-lg sm:text-xl md:text-2xl pt-6 text-text-bright">
-              And this is just the beginning.
-            </p>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-2 text-xs tracking-widest uppercase mb-6 text-secondary">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+            <span>Global Sourcing & Discovery Story</span>
+            <span className="text-outline-variant">•</span>
+            <span className="text-text-muted">Est. 2021</span>
           </div>
-          <button className="bg-ocean-abyss shadow-lg shadow-gold-glow font-bold font-mono rounded-full p-3 px-5 self-center w-fit text-gold-premium">
-            Ship now
-          </button>
-        </motion.div>
-        {/*<div className="md:flex justify-center items-center hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-ship-icon lucide-ship h-50 w-50 md:h-70 md:w-70"
-          >
-            <path d="M12 10.189V14" />
-            <path d="M12 2v3" />
-            <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" />
-            <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-8.188-3.639a2 2 0 0 0-1.624 0L3 14a11.6 11.6 0 0 0 2.81 7.76" />
-            <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1s1.2 1 2.5 1c2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
-          </svg>
-        </div>*/}
-      </section>
-      <section className="w-screen md:h-screen flex flex-col gap-5">
-        <h2 className="text-2xl font-extrabold font-mono text-center mt-10 text-gold-premium">
-          Our Mission & Vision
-        </h2>
-        <div className="p-10 max-md:grid max-md:grid-rows-2 flex-1 md:grid-cols-2 md:grid">
-          <div className="flex flex-col gap-5 md:m-2 md:p-10 items-center">
-            <h3 className="font-bold font-mono text-2xl text-gold-premium">
-              Our Mission
-            </h3>
-            <p className="text-lg font-semibold text-text-soft text-justify">
-              At Ligowin, our mission is simple — to make global trade feel
-              local, easy, and trustworthy. We understand how stressful it can
-              be to source goods from abroad, deal with uncertainty, or worry
-              about delivery. That’s why we’ve made it our responsibility to
-              handle everything for you — from China straight to your doorstep
-              in Nigeria, safely and without complications. <br /> We don’t just
-              move goods; we move trust, reliability, and peace of mind with
-              every shipment.
-            </p>
-          </div>
-          <div className="flex flex-col gap-5 md:m-2 md:p-10 items-center">
-            <h3 className="font-bold font-mono text-2xl text-gold-premium">
-              Our Vision
-            </h3>
-            <p className="font-semibold font-sans text-lg text-text-soft text-justify">
-              We envision a Nigeria where anyone — whether a small business
-              owner or a growing brand — can access quality products from
-              anywhere in the world without barriers. <br className="h-auto" />{" "}
-              Ligowin aims to become the most trusted bridge between China and
-              Nigeria, known not just for delivering goods, but for delivering
-              confidence, growth, and new opportunities to every customer we
-              serve.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="w-screen h-screen flex items-center flex-col gap-8">
-        <div className="md:grid md:grid-cols-2 w-full h-full max-md:grid max-md:grid-rows-2">
-          <div className="flex justify-center items-center">
-            <ShippingAnimation />
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <ol className="list-disc pl-5 flex flex-col gap-5 justify-center items-start w-full h-full">
-              <h2 className="text-3xl mb-8 self-center font-extrabold font-mono text-gold-premium">
-                Our services
-              </h2>
-              <li>
-                <p className="text-lg font-semibold font-serif text-text-soft">
-                  Trusted suppliers
-                </p>
-              </li>
-              <li>
-                <p className="text-lg font-semibold font-serif text-text-soft">
-                  Fast shipping from China
-                </p>
-              </li>
-              <li>
-                <p className="text-lg font-semibold font-serif text-text-soft">
-                  Competitive shipping rates
-                </p>
-              </li>
-              <li>
-                <p className="text-lg font-semibold font-serif text-text-soft">
-                  Quality inspection
-                </p>
-              </li>
-              <li>
-                <p className="text-lg font-semibold font-serif text-text-soft">
-                  Secure payments
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-      <section className=" w-screen h-screen flex flex-col gap-10 md:gap-20 justify-center items-center bg-harbor-charcoal ">
-        <h2 className="text-3xl font-extrabold font-mono text-gold-premium">
-          Testimonial
-        </h2>
-        <div className="flex flex-row overflow-x-auto scroll-smooth no-scrollbar items-center gap-10 w-full ">
-          {testimonials.map((items, index) => (
-            <div
-              className="border border-gold-border rounded-3xl min-w-80 md:min-w-100 md:w-full h-fit"
-              key={index}
-            >
-              <Testimonial
-                word={items.words}
-                image={items.image}
-                name={items.name}
-                from={items.from}
-              />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bg-light-lavender text-secondary text-sm font-bold">
+                🚀 Eliminating Sourcing Borders Daily
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-on-surface tracking-tight leading-tight">
+                Shopping Should Be <br className="hidden sm:inline" />
+                <span className="text-primary-container relative">
+                  Exciting ✨
+                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary" fill="none" viewBox="0 0 250 12">
+                    <path d="M3 9C60 3 170 3 247 9" stroke="currentColor" strokeLinecap="round" strokeWidth="4"></path>
+                  </svg>
+                </span>
+              </h1>
+              <p className="text-lg text-on-surface-variant max-w-2xl">
+                Ligowin Shopper was created to eliminate borders, simplify global product sourcing, and make discovering incredible products joyful, trustworthy, and seamless for everyone.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Link href="/shop" className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-on-primary font-bold text-lg shadow-btn-primary hover:scale-105 transition-all">
+                  Start Exploring →
+                </Link>
+                <a href="#our-process" className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-bg-light-lavender text-secondary font-bold hover:bg-secondary-fixed transition-colors">
+                  ✓ Our Guarantee
+                </a>
+              </div>
+              <div className="pt-4 flex flex-wrap items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-accent-amber/40 flex items-center justify-center font-bold text-xs text-on-surface ring-2 ring-surface-container-lowest">US</div>
+                    <div className="w-8 h-8 rounded-full bg-secondary/30 flex items-center justify-center font-bold text-xs text-on-surface ring-2 ring-surface-container-lowest">CN</div>
+                    <div className="w-8 h-8 rounded-full bg-accent-emerald/40 flex items-center justify-center font-bold text-xs text-on-surface ring-2 ring-surface-container-lowest">EU</div>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider text-text-muted font-bold">40+ Origin Ports</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-secondary">
+                  <span className="text-sm">✓</span>
+                  <span className="text-xs font-bold text-on-surface">100% Inspected Parcels</span>
+                </div>
+              </div>
             </div>
-          ))}
+
+            {/* Right Visual */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative max-w-lg mx-auto">
+                <div className="absolute -top-4 -right-4 w-full h-full rounded-2xl bg-secondary/10 -rotate-2"></div>
+                <div className="relative rounded-2xl overflow-hidden bg-surface-container-lowest shadow-card">
+                  <div className="h-80 bg-gradient-to-br from-bg-light-lavender to-bg-soft-cream flex items-center justify-center">
+                    <ShippingAnimation />
+                  </div>
+                  <div className="p-4 bg-gradient-to-t from-inverse-surface via-inverse-surface/60 to-transparent absolute bottom-0 inset-x-0 text-inverse-on-surface">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-bold text-on-primary">Zero Hassle Unboxing</p>
+                        <p className="text-xs text-surface-dim">Verified direct from certified manufacturers</p>
+                      </div>
+                      <span className="px-3 py-1 rounded-full bg-accent-emerald text-on-primary text-[10px] font-bold">READY TO SHIP</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -top-6 -left-6 bg-surface-container-lowest p-3 rounded-xl shadow-card flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-bg-light-lavender flex items-center justify-center text-secondary text-lg">✈️</div>
+                  <div>
+                    <p className="text-[10px] text-text-muted uppercase tracking-wider font-bold">Air Cargo Lane</p>
+                    <p className="text-xs font-bold text-on-surface">Guangzhou → Global Doorstep</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <section className="w-screen h-fit flex justify-center items-center mt-3 pt-10">
-        <Footer />
+
+      {/* Mission & Vision */}
+      <section className="w-full py-16 bg-bg-soft-cream px-4 lg:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs uppercase tracking-widest text-primary font-bold">Purpose Driven Commerce</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1">
+              Engineered to Democratize International Trade
+            </h2>
+            <p className="text-on-surface-variant mt-2">
+              We strip away the convoluted layers of cross-border commerce so independent creators, local retailers, and passionate shoppers get direct global power.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-8 rounded-2xl bg-surface-container-lowest shadow-card flex flex-col justify-between relative overflow-hidden group hover:shadow-card-hover transition-all">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-bl-full pointer-events-none"></div>
+              <div>
+                <div className="w-14 h-14 rounded-xl bg-bg-soft-cream text-primary-container flex items-center justify-center mb-6 text-2xl">🎯</div>
+                <span className="text-xs tracking-widest uppercase text-primary font-bold">Our Mission</span>
+                <h3 className="text-xl font-bold text-on-surface mt-1">Making Global Sourcing Effortless.</h3>
+                <p className="text-on-surface-variant mt-3 leading-relaxed text-sm">
+                  Connecting everyday shoppers and growing merchants directly to premium manufacturers and curated trends worldwide. We verify suppliers on-ground, consolidate bulk orders, and provide multi-currency clarity at check-out.
+                </p>
+              </div>
+              <div className="pt-6 flex items-center gap-2 text-primary text-sm font-bold">
+                <span>Direct factory access for everyone</span>
+                <span>✓</span>
+              </div>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-surface-container-lowest shadow-card flex flex-col justify-between relative overflow-hidden group hover:shadow-card-hover transition-all">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-bg-light-lavender rounded-bl-full pointer-events-none"></div>
+              <div>
+                <div className="w-14 h-14 rounded-xl bg-bg-light-lavender text-secondary flex items-center justify-center mb-6 text-2xl">🌍</div>
+                <span className="text-xs tracking-widest uppercase text-secondary font-bold">Our Vision</span>
+                <h3 className="text-xl font-bold text-on-surface mt-1">A World Where Any Product Is Within Reach.</h3>
+                <p className="text-on-surface-variant mt-3 leading-relaxed text-sm">
+                  Bringing the excitement of international discovery straight to your door with zero logistics headache. Whether you are ordering a single boutique gadget or scaling your fashion brand, the globe is your personal marketplace.
+                </p>
+              </div>
+              <div className="pt-6 flex items-center gap-2 text-secondary text-sm font-bold">
+                <span>Frictionless borderless commerce</span>
+                <span>→</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
+
+      {/* Timeline */}
+      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs uppercase tracking-widest text-secondary font-bold">The Evolution</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1">
+              The Journey from Frustration to Global Freedom
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { year: "2021", title: "The Genesis", desc: "Born out of frustration with delayed overseas packages, opaque shipping surcharges, and high middlemen fees.", color: "bg-bg-soft-cream text-primary-container", tag: "1st Sourcing Route Tested" },
+              { year: "2022", title: "Direct Sourcing Hubs", desc: "Established physical quality inspection checkpoints in Guangzhou and Yiwu to inspect goods before export.", color: "bg-bg-light-lavender text-secondary", tag: "200+ Verified Suppliers" },
+              { year: "2023", title: "Seamless Mobile Experience", desc: "Launched instant live tracking, multi-currency checkout, and automated customs clearance.", color: "bg-bg-soft-cream text-primary-container", tag: "Instant Customs API" },
+              { year: "2024+", title: "Global Shopper Family", desc: "Over 150,000+ satisfied customers across 40+ countries discovering high-value goods daily.", color: "bg-secondary text-on-secondary", tag: "150K+ Happy Shoppers", highlighted: true },
+            ].map((item, i) => (
+              <div key={i} className={`p-6 rounded-2xl ${item.highlighted ? "bg-secondary text-on-secondary shadow-elevated" : "bg-surface-container-lowest shadow-card"} flex flex-col justify-between hover:-translate-y-1 transition-transform`}>
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${item.highlighted ? "bg-primary-container text-on-primary" : "bg-surface-container text-on-surface"}`}>{item.year}</span>
+                  </div>
+                  <h3 className={`text-lg font-bold ${item.highlighted ? "text-on-secondary" : "text-on-surface"}`}>{item.title}</h3>
+                  <p className={`mt-2 text-sm ${item.highlighted ? "text-surface-dim" : "text-on-surface-variant"}`}>{item.desc}</p>
+                </div>
+                <div className={`mt-4 p-2 rounded-lg text-xs font-bold ${item.highlighted ? "bg-on-secondary/10 text-accent-amber" : "bg-surface-container-low text-primary"}`}>{item.tag}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="w-full py-16 bg-bg-light-lavender/40 px-4 lg:px-6">
+        <div className="max-w-6xl mx-auto">
+          <span className="text-xs uppercase tracking-widest text-primary font-bold">Our Philosophy</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1 mb-8">
+            What Keeps Ligowin Moving Fast
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { icon: "🛡️", title: "Trust & Transparency", desc: "Honest pricing, zero hidden border surcharges, real-time GPS tracking checkpoints.", tag: "Zero Hidden Fees", color: "bg-bg-light-green text-accent-emerald" },
+              { icon: "🏅", title: "Curated Quality", desc: "Every single supplier is physically visited and verified by our boots-on-the-ground auditors.", tag: "Inspected Prior to Flight", color: "bg-bg-soft-cream text-primary-container" },
+              { icon: "👆", title: "Effortless Simplicity", desc: "International sourcing made as fast and intuitive as ordering your favorite local takeaway.", tag: "1-Click Multi-Source Cart", color: "bg-bg-light-blue text-tertiary" },
+              { icon: "😊", title: "Customer Happiness", desc: "24/7 empathetic human support via WhatsApp and live desk. No cold automated bots.", tag: "Real Humans 24/7", color: "bg-pink-50 text-accent-pink" },
+              { icon: "🧠", title: "Relentless Innovation", desc: "Smarter logistics routing, dynamic micro-freight packaging algorithms, and AI supply matching.", tag: "40% Faster Routing", color: "bg-secondary text-on-secondary", wide: true },
+            ].map((item, i) => (
+              <div key={i} className={`p-6 rounded-2xl ${item.wide ? "bg-secondary text-on-secondary shadow-elevated lg:col-span-2" : "bg-surface-container-lowest shadow-card"} flex flex-col justify-between`}>
+                <div>
+                  <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center mb-4 text-xl`}>{item.icon}</div>
+                  <h3 className={`text-lg font-bold ${item.wide ? "text-on-secondary" : "text-on-surface"}`}>{item.title}</h3>
+                  <p className={`mt-2 text-sm ${item.wide ? "text-surface-container-high" : "text-on-surface-variant"}`}>{item.desc}</p>
+                </div>
+                <div className={`mt-4 text-[10px] font-bold uppercase tracking-wider ${item.wide ? "text-accent-amber" : "text-secondary"}`}>{item.tag}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services */}
+      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6" id="our-process">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs uppercase tracking-widest text-primary font-bold">Rigorous Excellence</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1">
+              How We Ensure You Get the Best
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { num: "01", icon: "🔍", title: "Supplier Verification", desc: "Legitimacy checks, factory audits, business registry validation, and sample history review.", tag: "Stage 1: Identity & Quality", color: "text-secondary" },
+              { num: "02", icon: "🔬", title: "Physical Sample Inspection", desc: "High-resolution photo logs, material testing, functional diagnostics, and defect rejection on-site.", tag: "Stage 2: Hands-on Audit", color: "text-primary-container" },
+              { num: "03", icon: "📦", title: "Secure Consolidation", desc: "Multiple orders repackaged into weatherproof, reinforced boxes to minimize volumetric freight fees.", tag: "Stage 3: Impact Packing", color: "text-tertiary" },
+              { num: "04", icon: "🚚", title: "Fast Air Cargo & Delivery", desc: "Priority flight lanes with end-to-end GPS handoff straight to your residential or store address.", tag: "Stage 4: Doorstep Arrival", color: "text-accent-emerald" },
+            ].map((item, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-surface-container-lowest shadow-card flex flex-col justify-between">
+                <div className="space-y-3">
+                  <span className={`text-3xl font-extrabold ${item.color}`}>{item.num}</span>
+                  <div className="text-xl">{item.icon}</div>
+                  <h3 className="text-sm font-bold text-on-surface">{item.title}</h3>
+                  <p className="text-xs text-on-surface-variant">{item.desc}</p>
+                </div>
+                <div className={`mt-4 pt-3 text-[10px] font-bold uppercase tracking-wider ${item.color}`}>{item.tag}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="w-full py-16 bg-bg-light-lavender/40 px-4 lg:px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold text-on-surface text-center mb-8">
+            Testimonial
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {testimonials.map((items, index) => (
+              <div key={index} className="border border-outline-variant/20 rounded-2xl bg-surface-container-lowest shadow-card">
+                <Testimonial word={items.words} image={items.image} name={items.name} from={items.from} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative rounded-3xl bg-gradient-to-br from-secondary via-secondary to-secondary text-on-secondary p-8 lg:p-12 overflow-hidden shadow-elevated">
+            <div className="absolute -right-16 -top-16 w-96 h-96 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
+            <div className="relative z-10 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-on-secondary/15 text-on-secondary text-sm font-bold mb-4">
+                🛍️ Your Global Discovery Starts Here
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-on-secondary tracking-tight">
+                Experience the Ligowin Difference Today
+              </h2>
+              <p className="text-surface-container-high mt-3">
+                Ready to find unbeatable products sourced directly from international manufacturing centers? Zero guesswork, clear pricing, and door-to-door assurance.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 mt-6">
+                <Link href="/shop" className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-on-primary font-bold shadow-btn-primary hover:bg-primary hover:scale-105 transition-all">
+                  Start Shopping →
+                </Link>
+                <Link href="/shop" className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-surface-container-lowest text-on-surface font-bold hover:bg-bg-warm-white transition-colors">
+                  Explore Catalog
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footers />
     </div>
   );
 };
 
-export default page;
+export default Page;
