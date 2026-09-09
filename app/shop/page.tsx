@@ -25,7 +25,13 @@ const links = [
 const Shop = () => {
   const [sellect, setSellect] = useState();
   const [currentLink, setCurrentLink] = useState("all");
-  const [cart, setCart] = useState([]);
+  interface CartItem {
+    name: string;
+    image: string;
+    price: number;
+    quantity: number;
+  }
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [cartNumber, setCartNumber] = useState(0);
   const [openCart, setOpenCart] = useState(false);
   const [search, setSearch] = useState("");
@@ -33,17 +39,17 @@ const Shop = () => {
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     setCart(savedCart);
-    const totalCount = savedCart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    const totalCount = savedCart.reduce((acc: number, item: CartItem) => acc + (item.quantity || 1), 0);
     setCartNumber(totalCount);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-    const totalCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    const totalCount = cart.reduce((acc: number, item: CartItem) => acc + (item.quantity || 1), 0);
     setCartNumber(totalCount);
   }, [cart]);
 
-  const addToCart = (item) => {
+  const addToCart = (item: { name: string; image: string; price: number }) => {
     const existing = cart.find((i) => i.name === item.name);
     let updatedCart;
     if (existing) {
@@ -56,7 +62,7 @@ const Shop = () => {
     setCart(updatedCart);
   };
 
-  const decreaseQuantity = (itemName) => {
+  const decreaseQuantity = (itemName: string) => {
     const existing = cart.find((i) => i.name === itemName);
     if (!existing) return;
     const newQuantity = (existing.quantity || 1) - 1;
