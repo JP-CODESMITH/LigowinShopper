@@ -1,30 +1,48 @@
 "use client";
 import React, { useState, useEffect, useMemo } from "react";
-import Image from "next/image";
-import Logo from "../../public/images/ChatGPT Image Jan 9, 2026, 10_54_57 PM.png";
 import Carti from "../components/cart";
-import { CloseOutline, SearchCircleOutline } from "react-ionicons";
 import Allm from "../shoppage/all";
-import { products } from "../../public/products/products";
+
+interface ProductImage {
+  id: string;
+  url: string;
+  publicId: string | null;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
+interface Product {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  price: number;
+  stockQty: number;
+  active: boolean;
+  categoryId: string | null;
+  category: Category | null;
+  images: ProductImage[];
+  createdAt: string;
+  updatedAt: string | null;
+}
 
 const links = [
   { name: "All", type: "all", icon: "📦" },
-  { name: "Male Wears", type: "male", icon: "👔" },
-  { name: "Female Wears", type: "female", icon: "👗" },
-  { name: "Male Bags", type: "male-bags", icon: "💼" },
-  { name: "Female Bags", type: "female-bags", icon: "👜" },
-  { name: "Kitchen", type: "kitchen", icon: "🍳" },
-  { name: "Devices", type: "devices", icon: "📱" },
-  { name: "Solar", type: "solar", icon: "☀️" },
-  { name: "Vehicle", type: "vehicle", icon: "🚗" },
-  { name: "Furniture", type: "furniture", icon: "🪑" },
   { name: "Jewelry", type: "jewelry", icon: "💍" },
+  { name: "Footwear", type: "footwear", icon: "👟" },
   { name: "Perfume", type: "perfume", icon: "🧴" },
 ];
 
 const Shop = () => {
-  const [sellect, setSellect] = useState();
+  const [sellect, setSellect] = useState<string | null>(null);
   const [currentLink, setCurrentLink] = useState("all");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  
   interface CartItem {
     name: string;
     image: string;
@@ -35,6 +53,10 @@ const Shop = () => {
   const [cartNumber, setCartNumber] = useState(0);
   const [openCart, setOpenCart] = useState(false);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -48,6 +70,19 @@ const Shop = () => {
     const totalCount = cart.reduce((acc: number, item: CartItem) => acc + (item.quantity || 1), 0);
     setCartNumber(totalCount);
   }, [cart]);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/products");
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const addToCart = (item: { name: string; image: string; price: number }) => {
     const existing = cart.find((i) => i.name === item.name);
@@ -88,15 +123,26 @@ const Shop = () => {
     const query = search.toLowerCase();
     const filteredProducts = currentLink === "all"
       ? products
-      : products.filter((item) => item.type === currentLink);
+      : products.filter((item) => item.category?.slug === currentLink);
     return filteredProducts.filter((item) => {
       const name = item.name?.toLowerCase() || "";
       const description = item.description?.toLowerCase() || "";
       return name.includes(query) || description.includes(query);
     });
-  }, [search, currentLink]);
+  }, [search, currentLink, products]);
 
-  const selectedProduct = filteredData.find((p) => p.path === sellect);
+  const selectedProduct = filteredData.find((p) => p.images[0]?.url === sellect);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-bg-warm-white text-on-surface font-sans flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-container mx-auto mb-4"></div>
+          <p className="text-text-muted">Loading products...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-bg-warm-white text-on-surface font-sans">
@@ -144,7 +190,7 @@ const Shop = () => {
             {/* Trending Keywords */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-3 text-xs text-text-muted">
               <span className="font-bold text-on-surface">🔥 Popular:</span>
-              {["Sneakers", "Smart Watches", "Earbuds", "Bags", "Jackets"].map((tag) => (
+              {["Perfume", "Watch", "Shoes", "Jewelry"].map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setSearch(tag)}
@@ -198,17 +244,17 @@ const Shop = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredData.map((item, index) => (
-            <div key={index}>
+          {filteredData.map((item) => (
+            <div key={item.id}>
               <Allm
-                image={item.path}
+                image={item.images[0]?.url || ""}
                 price={item.price}
                 name={item.name}
-                description={item.description}
+                description={item.description || ""}
                 id={item.id}
-                Count={() => addToCart({ name: item.name, image: item.path, price: item.price })}
+                Count={() => addToCart({ name: item.name, image: item.images[0]?.url || "", price: item.price })}
                 Minus={() => decreaseQuantity(item.name)}
-                modal={() => setSellect(item.path)}
+                modal={() => setSellect(item.images[0]?.url || null)}
               />
             </div>
           ))}
@@ -243,7 +289,7 @@ const Shop = () => {
                   <div className="space-y-4">
                     <h1 className="text-2xl md:text-3xl font-bold text-on-surface">{selectedProduct?.name}</h1>
                     <div className="flex items-baseline gap-2 border-b border-outline-variant/20 pb-4">
-                      <span className="text-2xl font-extrabold text-primary-container">₦{selectedProduct?.price}</span>
+                      <span className="text-2xl font-extrabold text-primary-container">₦{selectedProduct?.price.toLocaleString()}</span>
                     </div>
                     <div>
                       <h2 className="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">Description</h2>
@@ -268,8 +314,10 @@ const Shop = () => {
                   <div className="flex flex-col gap-3 mt-6 pt-4 border-t border-outline-variant/20">
                     <button
                       onClick={() => {
-                        addToCart({ name: selectedProduct?.name, image: selectedProduct?.path, price: selectedProduct?.price });
-                        handleClose();
+                        if (selectedProduct) {
+                          addToCart({ name: selectedProduct.name, image: selectedProduct.images[0]?.url || "", price: selectedProduct.price });
+                          handleClose();
+                        }
                       }}
                       className="w-full bg-primary-container text-on-primary py-3 rounded-full font-bold hover:bg-primary shadow-btn-primary transition-all"
                     >

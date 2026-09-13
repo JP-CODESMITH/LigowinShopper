@@ -6,13 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma skills sync || exit 0"
   },
   "dependencies": {
+    "@prisma/orm-postgres": "^8.0.0-rc.11",
+    "dotenv": "^17.4.2",
     "lottie-react": "^2.4.1",
     "motion": "^12.38.0",
     "next": "16.1.7",
     "next-cloudinary": "^6.17.5",
+    "prisma": "^8.0.0-rc.14",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-ionicons": "^4.2.1",

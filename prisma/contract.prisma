@@ -1,0 +1,41 @@
+// use prisma-8
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  slug      String    @unique
+  products  Product[]
+
+  createdAt String    @default(now())
+  updatedAt String?
+}
+
+model Product {
+  id          String         @id @default(uuid())
+  name        String
+  slug        String         @unique
+  description String?
+  price       Decimal
+  stockQty    Int            @default(0)
+  active      Boolean        @default(true)
+
+  categoryId  String?
+  category    Category?      @relation(fields: [categoryId], references: [id])
+
+  images      ProductImage[]
+
+  createdAt   String         @default(now())
+  updatedAt   String?
+}
+
+model ProductImage {
+  id        String   @id @default(uuid())
+
+  url       String
+  publicId  String?
+
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+
+  createdAt String   @default(now())
+}

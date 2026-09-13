@@ -51,7 +51,7 @@ const Footers = () => {
               <a href="/" className="text-sm text-surface-dim hover:text-on-primary transition-colors">Home</a>
               <a href="/shop" className="text-sm text-surface-dim hover:text-on-primary transition-colors">Shop</a>
               <a href="/about" className="text-sm text-surface-dim hover:text-on-primary transition-colors">About</a>
-              <a href="/Contact" className="text-sm text-surface-dim hover:text-on-primary transition-colors">Contact</a>
+              <a href="/contact" className="text-sm text-surface-dim hover:text-on-primary transition-colors">Contact</a>
             </div>
           </div>
           <div>

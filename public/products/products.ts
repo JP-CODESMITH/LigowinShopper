@@ -15,1008 +15,369 @@ export const products: Product[] = [
         id: "1",
         name: "Watch",
         type: "jewelry",
-        description: "a stylish watch with a leather strap",
+        description: "A stylish watch with a leather strap",
         price: 29.99,
         colour: "blue",
-        path: `${BASE_URL}IMG-20260307-WA0088.jpg`, // watch
+        path: `${BASE_URL}IMG-20260307-WA0088.jpg`,
     },
     {
         id: "2",
         name: "Shoes",
         type: "footwear",
-        description: "comfortable running shoes for everyday wear",
+        description: "Comfortable running shoes for everyday wear",
         price: 49.99,
         colour: "red",
-        path: `${BASE_URL}IMG-20260307-WA0089.jpg` // shoes
-    },
-    {
-        id: "4",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0000.jpg` // product1
-    },
-    {
-        id: "5",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0003.jpg` // product2
-    },
-    {
-        id: "6",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0009.jpg` // product3
-    },
-    {
-        id: "7",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0010.jpg` // product4
-    },
-    {
-        id: "8",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0031.jpg` // product5
-    },
-    {
-        id: "9",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0032.jpg` // product6
-    },
-    {
-        id: "10",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0033.jpg` // product7
-    },
-    {
-        id: "11",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0034.jpg` // product8
-    },
-    {
-        id: "12",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0035.jpg` // product9
-    },
-    {
-        id: "13",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0036.jpg` // product10
-    },
-    {
-        id: "14",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0037.jpg` // product11
-    },
-    {
-        id: "15",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0038.jpg` // product12
-    },
-    {
-        id: "16",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0039.jpg` // product13
-    },
-    {
-        id: "17",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0040.jpg` // product14
-    },
-    {
-        id: "18",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0041.jpg` // product15
-    },
-    {
-        id: "19",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0042.jpg` // product16
-    },
-    {
-        id: "20",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0043.jpg` // product17
-    },
-    {
-        id: "21",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0044.jpg` // product18
-    },
-    {
-        id: "22",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0045.jpg` // product19
-    },
-    {
-        id: "23",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0046.jpg` // product20
-    },
-    {
-        id: "24",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0047.jpg` // product21
-    },
-    {
-        id: "25",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0048.jpg` // product22
-    },
-    {
-        id: "26",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0049.jpg` // product23
-    },
-    {
-        id: "27",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0050.jpg` // product24
-    },
-    {
-        id: "28",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0051.jpg` // product25
-    },
-    {
-        id: "29",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0052.jpg` // product26
-    },
-    {
-        id: "30",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0053.jpg` // product27
-    },
-    {
-        id: "31",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0054.jpg` // product28
-    },
-    {
-        id: "32",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0055.jpg` // product29
-    },
-    {
-        id: "33",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0056.jpg` // product30
-    },
-    {
-        id: "34",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0057.jpg` // product31
-    },
-    {
-        id: "35",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0058.jpg` // product32
-    },
-    {
-        id: "36",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0059.jpg` // product33
-    },
-    {
-        id: "37",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0060.jpg` // product34
-    },
-    {
-        id: "38",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0061.jpg` // product35
-    },
-    {
-        id: "39",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0062.jpg` // product36
-    },
-    {
-        id: "40",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0063.jpg` // product37
-    },
-    {
-        id: "41",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0064.jpg` // product38
-    },
-    {
-        id: "42",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0065.jpg` // product39
-    },
-    {
-        id: "43",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0066.jpg` // product40
-    },
-    {
-        id: "44",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0067.jpg` // product41
-    },
-    {
-        id: "45",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0068.jpg` // product42
-    },
-    {
-        id: "46",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0069.jpg` // product43
-    },
-    {
-        id: "47",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0070.jpg` // product44
-    },
-    {
-        id: "48",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0071.jpg` // product45
-    },
-    {
-        id: "49",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0072.jpg` // product46
-    },
-    {
-        id: "50",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0073.jpg` // product47
-    },
-    {
-        id: "51",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0074.jpg` // product48
-    },
-    {
-        id: "52",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0075.jpg` // product49
-    },
-    {
-        id: "53",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0076.jpg` // product50
-    },
-    {
-        id: "54",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0077.jpg` // product51
-    },
-    {
-        id: "55",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0078.jpg` // product52
-    },
-    {
-        id: "56",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0079.jpg` // product53
-    },
-    {
-        id: "57",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0080.jpg` // product54
-    },
-    {
-        id: "58",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0081.jpg` // product55
-    },
-    {
-        id: "59",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0082.jpg` // product56
-    },
-    {
-        id: "60",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0083.jpg` // product57
-    },
-    {
-        id: "61",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0084.jpg` // product58
-    },
-    {
-        id: "62",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0085.jpg` // product59
-    },
-    {
-        id: "63",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0086.jpg` // product60
-    },
-    {
-        id: "64",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0087.jpg` // product61
-    },
-    {
-        id: "101",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0021.jpg` // product64
-    },
-    {
-        id: "65",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0022.jpg` // product65
-    },
-    {
-        id: "66",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0023.jpg` // product66
-    },
-    {
-        id: "67",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0024.jpg` // product67
-    },
-    {
-        id: "68",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0025.jpg` // product68
+        path: `${BASE_URL}IMG-20260307-WA0089.jpg`,
     },
     {
         id: "69",
-        name: "La Vida es bella",
+        name: "La Vida es Bella",
         type: "perfume",
-        description: "a quality product",
+        description: "La Vie Est Belle perfume",
         price: 210000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0001.jpg` // product69
+        path: `${BASE_URL}IMG-20260401-WA0001.jpg`,
     },
     {
         id: "70",
-        name: "Maison Crivelli's Oud Maracujá ",
+        name: "Maison Crivelli's Oud Maracuja",
         type: "perfume",
-        description: "Maison Crivelli's Oud Maracujá is a bold, fruity-woody Extrait de Parfum (2023) blending bright passion fruit with intense, smoky oud and leather. Known for its high concentration and long-lasting sillage 100ml ",
+        description: "Maison Crivelli's Oud Maracuja is a bold, fruity-woody Extrait de Parfum (2023) blending bright passion fruit with intense, smoky oud and leather. 100ml",
         price: 480000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0002.jpg` // product70
-    },
-    {
-        id: "72",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 30000,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0004.jpg` // product72
+        path: `${BASE_URL}IMG-20260401-WA0002.jpg`,
     },
     {
         id: "73",
         name: "9pm Elixir Afnan",
         type: "perfume",
-        description: "a quality product",
+        description: "9pm Elixir by Afnan perfume",
         price: 135000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0005.jpg` // product73
+        path: `${BASE_URL}IMG-20260401-WA0005.jpg`,
     },
     {
         id: "74",
         name: "Asad Elixir Lattafa",
         type: "perfume",
-        description: "a quality product",
-        price: 19.99,
+        description: "Asad Elixir by Lattafa perfume",
+        price: 75000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0006.jpg` // product74
+        path: `${BASE_URL}IMG-20260401-WA0006.jpg`,
     },
     {
         id: "75",
         name: "Hayaati Lattafa",
         type: "perfume",
-        description: "a quality product",
+        description: "Hayaati by Lattafa perfume",
         price: 25000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0007.jpg` // product75
+        path: `${BASE_URL}IMG-20260401-WA0007.jpg`,
     },
     {
         id: "76",
         name: "Teriaq Intense Lattafa",
         type: "perfume",
-        description: "a quality product",
+        description: "Teriaq Intense by Lattafa perfume",
         price: 87000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0008.jpg` // product76
-    },
-    {
-        id: "77",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0020.jpg` // product77
-    },
-    {
-        id: "78",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0019.jpg` // product78
+        path: `${BASE_URL}IMG-20260401-WA0008.jpg`,
     },
     {
         id: "79",
-        name: "His Coffession Laffata",
+        name: "His Coffession Lattafa",
         type: "perfume",
-        description: "a quality product",
+        description: "His Coffession by Lattafa perfume",
         price: 63000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0009.jpg` // product79
+        path: `${BASE_URL}IMG-20260401-WA0009.jpg`,
     },
     {
         id: "80",
-        name: "Haramain Amber oud",
+        name: "Haramain Amber Oud",
         type: "perfume",
-        description: "a quality product",
+        description: "Haramain Amber Oud perfume",
         price: 185000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0010.jpg` // product80
+        path: `${BASE_URL}IMG-20260401-WA0010.jpg`,
     },
     {
         id: "82",
         name: "Tom Ford Lost Cherry",
         type: "perfume",
-        description: "It features a rich blend of black cherry, almond, and spicy Turkish rose, aiming for a luxurious, sweet, and sensual profile packaged in a signature red bottle. 100ml 650k",
+        description: "Tom Ford Lost Cherry - rich blend of black cherry, almond, and spicy Turkish rose. 100ml",
         price: 650000,
         colour: "brown",
-        path: `${BASE_URL}IMG-20260401-WA0012.jpg` // product82
+        path: `${BASE_URL}IMG-20260401-WA0012.jpg`,
     },
     {
         id: "83",
-        name: "Maison Extrait de perfum verporisation",
-        type: "general",
-        description: "Barakkat Rouge 540, 100ml , 3.4FLOZ",
+        name: "Maison Extrait de Parfum",
+        type: "perfume",
+        description: "Barakkat Rouge 540, 100ml, 3.4 FLOZ",
         price: 29500,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0013.jpg` // product83
+        path: `${BASE_URL}IMG-20260401-WA0013.jpg`,
     },
     {
         id: "84",
         name: "Christian Dior Oud Ispahan",
         type: "perfume",
-        description: "Christian Dior Oud Ispahan 100 ml is an opulent, unisex oriental floral fragrance launched in 2012, characterized by a potent blend of Damascena rose and intense agarwood (oud) smoke. ",
+        description: "Christian Dior Oud Ispahan 100ml - opulent, unisex oriental floral fragrance with Damascena rose and intense agarwood (oud).",
         price: 1400000,
         colour: "gold",
-        path: `${BASE_URL}IMG-20260401-WA0014.jpg` // product84
+        path: `${BASE_URL}IMG-20260401-WA0014.jpg`,
     },
     {
         id: "85",
-        name: "La Vis Better",
-        type: "general",
-        description: "75ml , 2.5FLOZ",
+        name: "La Vie Est Belle",
+        type: "perfume",
+        description: "La Vie Est Belle perfume, 75ml, 2.5 FLOZ",
         price: 50000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0015.jpg` // product85
+        path: `${BASE_URL}IMG-20260401-WA0015.jpg`,
     },
     {
         id: "86",
-        name: "Dance & Gabriel",
+        name: "Dolce & Gabbana",
         type: "perfume",
-        description: "rose the one",
+        description: "Dolce & Gabbana Rose The One perfume",
         price: 200000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0016.jpg` // product86
+        path: `${BASE_URL}IMG-20260401-WA0016.jpg`,
     },
     {
         id: "87",
-        name: "Tom Ford Tobacco Vanila",
+        name: "Tom Ford Tobacco Vanille",
         type: "perfume",
-        description: "Tom Ford Tobacco Vanille 100ml Eau de Parfum is a luxurious, unisex Oriental Spicy fragrance featuring prominent notes of tobacco leaf, creamy tonka bean, vanilla, and cocoa. 100ml.",
+        description: "Tom Ford Tobacco Vanille 100ml Eau de Parfum - luxurious unisex Oriental Spicy fragrance with tobacco leaf, tonka bean, vanilla, and cocoa.",
         price: 550000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0017.jpg` // product87
+        path: `${BASE_URL}IMG-20260401-WA0017.jpg`,
     },
     {
         id: "88",
-        name: "Moisen Fragrance Khurshid Paris",
+        name: "Maison Fragrance Khurshid Paris",
         type: "perfume",
-        description: "Boceanial Rovg 504, eau de perfum",
+        description: "Oceanic Rouge 504, Eau de Parfum",
         price: 20000,
         colour: "brown",
-        path: `${BASE_URL}IMG-20260401-WA0019.jpg` // product88
+        path: `${BASE_URL}IMG-20260401-WA0019.jpg`,
     },
     {
         id: "89",
-        name: "club de nuit",
+        name: "Club de Nuit",
         type: "perfume",
-        description: "a quality product, 105ml",
+        description: "Club de Nuit perfume, 105ml",
         price: 70000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0020.jpg` // product89
+        path: `${BASE_URL}IMG-20260401-WA0020.jpg`,
     },
     {
         id: "90",
-        name: "body",
+        name: "Body Mist",
         type: "perfume",
-        description: "a quality product",
-        price: 150000,
+        description: "Body mist perfume",
+        price: 15000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0021.jpg` // product90
+        path: `${BASE_URL}IMG-20260401-WA0021.jpg`,
     },
     {
         id: "91",
-        name: "Gucci Osmanthus neccer",
+        name: "Gucci Osmanthus",
         type: "perfume",
-        description: "It is a high-end, floral-woody, unisex scent featuring osmanthus flower, apricot, and sandalwood, packaged in a distinctive red glass bottle with a hummingbird design. 100ml ",
+        description: "Gucci Osmanthus - high-end floral-woody unisex scent with osmanthus flower, apricot, and sandalwood. 100ml",
         price: 580000,
         colour: "chocolate",
-        path: `${BASE_URL}IMG-20260401-WA0022.jpg` // product91
+        path: `${BASE_URL}IMG-20260401-WA0022.jpg`,
     },
     {
         id: "92",
         name: "Bloom",
         type: "perfume",
-        description: "G.M.C maria Grazia Cucinotta Bloom, 100ml, 3.4FLOZ",
+        description: "G.M.C Maria Grazia Cucinotta Bloom, 100ml, 3.4 FLOZ",
         price: 45000,
         colour: "green",
-        path: `${BASE_URL}IMG-20260401-WA0023.jpg` // product92
+        path: `${BASE_URL}IMG-20260401-WA0023.jpg`,
     },
     {
         id: "93",
-        name: "Roja perfume I8 Burlington I9",
+        name: "Roja Perfume Burlington",
         type: "perfume",
-        description: "a quality product",
+        description: "Roja Perfume Burlington 19 review",
         price: 450000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0024.jpg` // product93
+        path: `${BASE_URL}IMG-20260401-WA0024.jpg`,
     },
     {
         id: "94",
-        name: "Vercares Brilliant Cristal",
+        name: "Viktor & Rolf Flowerbomb",
         type: "perfume",
-        description: "a quality product",
+        description: "Viktor & Rolf Flowerbomb Crystal",
         price: 70000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0025.jpg` // product94
+        path: `${BASE_URL}IMG-20260401-WA0025.jpg`,
     },
     {
         id: "95",
-        name: "Mark him",
+        name: "Marc Jacobs Pour Homme",
         type: "perfume",
-        description: "100ml, water pour home perfume",
+        description: "Marc Jacobs Pour Homme - 100ml, Eau de Parfum",
         price: 18000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0026.jpg` // product95
+        path: `${BASE_URL}IMG-20260401-WA0026.jpg`,
     },
     {
         id: "96",
-        name: "euhponic",
+        name: "Euphoric",
         type: "perfume",
-        description: "a quality product",
+        description: "Euphoric perfume",
         price: 60000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0027.jpg` // product96
+        path: `${BASE_URL}IMG-20260401-WA0027.jpg`,
     },
     {
         id: "97",
-        name: "Terre D'Horse",
+        name: "Terre d'Hermes",
         type: "perfume",
-        description: "eau de perfum natural spray",
+        description: "Terre d'Hermes - Eau de Parfum natural spray",
         price: 40000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0028.jpg` // product97
+        path: `${BASE_URL}IMG-20260401-WA0028.jpg`,
     },
     {
         id: "98",
-        name: "Blue De Challenge",
+        name: "Bleu de Chanel",
         type: "perfume",
-        description: "a quality product",
+        description: "Bleu de Chanel perfume",
         price: 15000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0029.jpg` // product98
+        path: `${BASE_URL}IMG-20260401-WA0029.jpg`,
     },
     {
         id: "99",
         name: "Azzaro The Most Wanted",
         type: "perfume",
-        description: "a quality product",
+        description: "Azzaro The Most Wanted perfume",
         price: 180000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0030.jpg` // product99
+        path: `${BASE_URL}IMG-20260401-WA0030.jpg`,
     },
     {
         id: "100",
-        name: "Sauvace ",
+        name: "Dior Sauvage",
         type: "perfume",
-        description: " eau de perfum verporisation, 100ml , 3.4 Floz",
+        description: "Dior Sauvage - Eau de Parfum, 100ml, 3.4 FLOZ",
         price: 120000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0031.jpg` // product100
-    },
-    {
-        id: "102",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260307-WA0087.jpg` // product61
-    },
-    {
-        id: "103",
-        name: "Product",
-        type: "general",
-        description: "a quality product",
-        price: 19.99,
-        colour: "black",
-        path: `${BASE_URL}IMG-20260328-WA0017.jpg` // product62
+        path: `${BASE_URL}IMG-20260401-WA0031.jpg`,
     },
     {
         id: "104",
-        name: "Ombre Nomade Louis Vuition",
+        name: "Ombre Nomade Louis Vuitton",
         type: "perfume",
-        description: "A combination of Assam Oud wood, benzoin, raspberry, and leathery notes, creating a smoky, yet fruity and sweet profile.  Price ",
+        description: "Louis Vuitton Ombre Nomade - Assam Oud wood, benzoin, raspberry, and leathery notes. Smoky, fruity, and sweet.",
         price: 1000000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0032.jpg` // product101
+        path: `${BASE_URL}IMG-20260401-WA0032.jpg`,
     },
     {
         id: "105",
-        name: "Gabelil chank perfume",
+        name: "Gabrielle Chanel",
         type: "perfume",
-        description: "a quality product",
+        description: "Gabrielle Chanel perfume",
         price: 30000,
         colour: "gold",
-        path: `${BASE_URL}IMG-20260401-WA0033.jpg` // product102
+        path: `${BASE_URL}IMG-20260401-WA0033.jpg`,
     },
     {
         id: "106",
-        name: "Libre eau de perfum",
+        name: "Libre Eau de Parfum",
         type: "perfume",
-        description: "a quality product",
+        description: "Libre Eau de Parfum",
         price: 60000,
         colour: "gold",
-        path: `${BASE_URL}IMG-20260401-WA0034.jpg` // product103
+        path: `${BASE_URL}IMG-20260401-WA0034.jpg`,
     },
     {
         id: "107",
         name: "Bloom",
         type: "perfume",
-        description: "G.M.C maria Grazia Cucinotta Bloom, 100ml, 3.4FLOZ",
+        description: "G.M.C Maria Grazia Cucinotta Bloom, 100ml, 3.4 FLOZ",
         price: 50000,
         colour: "red",
-        path: `${BASE_URL}IMG-20260401-WA0035.jpg` // product104
+        path: `${BASE_URL}IMG-20260401-WA0035.jpg`,
     },
     {
         id: "108",
         name: "Sexy Scandal",
         type: "perfume",
-        description: "a quality product",
+        description: "Sexy Scandal perfume",
         price: 22000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0036.jpg` // product105
+        path: `${BASE_URL}IMG-20260401-WA0036.jpg`,
     },
     {
         id: "109",
-        name: "Gabrille channel",
+        name: "Gabrielle Chanel",
         type: "perfume",
-        description: "A solar and voluptuous, feminine fragrance designed for those who want to express their own personality, created by Olivier Polge.  100ml ",
+        description: "Gabrielle Chanel - solar and voluptuous feminine fragrance by Olivier Polge. 100ml",
         price: 390000,
         colour: "gold",
-        path: `${BASE_URL}IMG-20260401-WA0037.jpg` // product106
+        path: `${BASE_URL}IMG-20260401-WA0037.jpg`,
     },
     {
         id: "110",
-        name: "Angels share Kilian Parads",
+        name: "Angels Share Kilian",
         type: "perfume",
-        description: "vaporisation spray, 50ml , 1.7.8. oz",
+        description: "Kilian Angels Share - vaporisation spray, 50ml, 1.7 oz",
         price: 430000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0038.jpg` // product107
+        path: `${BASE_URL}IMG-20260401-WA0038.jpg`,
     },
     {
         id: "111",
-        name: "Pur Oud Lus Vuition",
+        name: "Pure Oud Louis Vuitton",
         type: "perfume",
-        description: "Louis Vuitton Pur Oud is an ultra-premium, unisex woody-spicy fragrance launched in 2021, featuring a high concentration of rare Indian and Cambodian oud, along with notes of musk and animalic undertones. 100ml",
+        description: "Louis Vuitton Pure Oud - ultra-premium unisex woody-spicy fragrance with rare Indian and Cambodian oud. 100ml",
         price: 4000000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0039.jpg` // product108
+        path: `${BASE_URL}IMG-20260401-WA0039.jpg`,
     },
     {
         id: "112",
-        name: "coco Daisy",
+        name: "Coco Mademoiselle",
         type: "perfume",
-        description: "Maiden Anna",
+        description: "Coco Mademoiselle perfume",
         price: 15000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0040.jpg` // product109
+        path: `${BASE_URL}IMG-20260401-WA0040.jpg`,
     },
     {
         id: "113",
         name: "Dior Sauvage Elixir",
         type: "perfume",
-        description: "Dior Sauvage Elixir is an intensely concentrated, woody-aromatic fragrance for men, featuring notes of lavender, spices, and rich woods midnight-blue glass bottle. It is known for high longevity (10-12+ hours) and a powerful, sophisticated, and rare aromatic scent.",
+        description: "Dior Sauvage Elixir - intensely concentrated woody-aromatic fragrance with lavender, spices, and rich woods. 10-12+ hours longevity.",
         price: 420000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0041.jpg` // product110
+        path: `${BASE_URL}IMG-20260401-WA0041.jpg`,
     },
     {
         id: "114",
-        name: "5th coog chaveg",
+        name: "5th Avenue Coach",
         type: "perfume",
-        description: "eau de perfum",
+        description: "5th Avenue Coach - Eau de Parfum",
         price: 20000,
         colour: "gold",
-        path: `${BASE_URL}IMG-20260401-WA0042.jpg` // product111
+        path: `${BASE_URL}IMG-20260401-WA0042.jpg`,
     },
     {
         id: "115",
-        name: "coog chaveg perfume",
+        name: "Coach Eau de Parfum",
         type: "perfume",
-        description: "Eau de verporisation spray, 100m, 3.4FLOZ",
+        description: "Coach Eau de Parfum spray, 100ml, 3.4 FLOZ",
         price: 42000,
         colour: "black",
-        path: `${BASE_URL}IMG-20260401-WA0043.jpg` // product112
-    }
+        path: `${BASE_URL}IMG-20260401-WA0043.jpg`,
+    },
 ];
