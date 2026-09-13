@@ -32,9 +32,14 @@ interface Product {
 
 const links = [
   { name: "All", type: "all", icon: "📦" },
-  { name: "Jewelry", type: "jewelry", icon: "💍" },
-  { name: "Footwear", type: "footwear", icon: "👟" },
-  { name: "Perfume", type: "perfume", icon: "🧴" },
+  { name: "Beauty", type: "beauty", icon: "💄" },
+  { name: "Fragrances", type: "fragrances", icon: "🧴" },
+  { name: "Furniture", type: "furniture", icon: "🛋️" },
+  { name: "Groceries", type: "groceries", icon: "🍎" },
+  { name: "Laptops", type: "laptops", icon: "💻" },
+  { name: "Shirts", type: "mens-shirts", icon: "👔" },
+  { name: "Shoes", type: "mens-shoes", icon: "👟" },
+  { name: "Watches", type: "mens-watches", icon: "⌚" },
 ];
 
 const Shop = () => {
@@ -74,11 +79,14 @@ const Shop = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/products");
+      // Fetch products from the NestJS backend running on port 4000
+      const response = await fetch("http://localhost:4000/products");
       const data = await response.json();
-      setProducts(data);
+      // Ensure data is always an array (handles error responses gracefully)
+      setProducts(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Error fetching products:", error);
+      setProducts([]);
     } finally {
       setLoading(false);
     }

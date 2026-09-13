@@ -13,11 +13,11 @@ export default function Allm({
 }: {
   image: string;
   name: string;
-  price: string;
+  price: number;
   description: string;
-  Count: boolean;
-  Minus: boolean;
-  modal: any;
+  Count: () => void;
+  Minus: () => void;
+  modal: () => void;
   id: string;
 }) {
   const [vissible, setVissible] = useState(0);

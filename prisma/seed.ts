@@ -1,6 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import postgres from "@prisma/orm-postgres/runtime";
+import type { Contract } from "./contract.d";
+import contractJson from "./contract.json" with { type: "json" };
 
-const prisma = new PrismaClient();
+const db = postgres<Contract>({
+  contractJson,
+  url: process.env["DATABASE_URL"],
+});
 
 const BASE_URL = "https://rmcnjxvjosmglbobgfyh.supabase.co/storage/v1/object/public/products/";
 
@@ -346,21 +351,34 @@ async function main() {
 
   // Create categories
   for (const category of categories) {
-    await prisma.category.upsert({
-      where: { slug: category.slug },
-      update: {},
-      create: {
+    const existing = await db.orm.public.Category.first({
+      slug: category.slug,
+    });
+
+    if (!existing) {
+      await db.orm.public.Category.create({
         name: category.name,
         slug: category.slug,
-      },
-    });
-    console.log(`Created category: ${category.name}`);
+      });
+      console.log(`Created category: ${category.name}`);
+    } else {
+      console.log(`Category already exists: ${category.name}`);
+    }
   }
 
   // Create products
   for (const product of products) {
-    const category = await prisma.category.findUnique({
-      where: { slug: product.categoryName },
+    const existing = await db.orm.public.Product.first({
+      slug: product.slug,
+    });
+
+    if (existing) {
+      console.log(`Product already exists: ${product.name}`);
+      continue;
+    }
+
+    const category = await db.orm.public.Category.first({
+      slug: product.categoryName,
     });
 
     if (!category) {
@@ -368,39 +386,30 @@ async function main() {
       continue;
     }
 
-    const createdProduct = await prisma.product.upsert({
-      where: { slug: product.slug },
-      update: {},
-      create: {
-        name: product.name,
-        slug: product.slug,
-        description: product.description,
-        price: product.price,
-        stockQty: 100,
-        active: true,
-        categoryId: category.id,
-      },
+    const createdProduct = await db.orm.public.Product.create({
+      name: product.name,
+      slug: product.slug,
+      description: product.description,
+      price: product.price,
+      stockQty: 100,
+      active: true,
+      categoryId: category.id,
     });
 
     // Create product image
-    await prisma.productImage.create({
-      data: {
-        url: product.imageUrl,
-        productId: createdProduct.id,
-      },
+    await db.orm.public.ProductImage.create({
+      url: product.imageUrl,
+      productId: createdProduct.id,
     });
 
     console.log(`Created product: ${product.name}`);
   }
 
   console.log("Seeding completed!");
+  await db.close();
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
