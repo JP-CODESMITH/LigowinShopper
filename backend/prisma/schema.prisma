@@ -7,6 +7,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Role enum — controls access level for each user account.
+// USER is the default for all new registrations.
+// ADMIN gets full access to protected management endpoints.
+enum Role {
+  USER
+  ADMIN
+}
+
+// User model — stores account credentials and profile info.
+// Password is always stored as a bcrypt hash (never plaintext).
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String   // bcrypt hash
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Category {
   id        String    @id @default(uuid())
   name      String    @unique
