@@ -116,6 +116,11 @@ const Shop = () => {
     }
   };
 
+  // Remove a cart item entirely
+  const removeFromCart = (itemName: string) => {
+    setCart(cart.filter((i) => i.name !== itemName));
+  };
+
   const handleClose = () => setSellect(null);
 
   useEffect(() => {
@@ -373,6 +378,15 @@ const Shop = () => {
                       <p className="text-xs text-text-muted">₦{item.price.toLocaleString()}</p>
                       <p className="text-[10px] text-secondary font-bold">Qty: {item.quantity}</p>
                     </div>
+                    <button
+                      onClick={() => removeFromCart(item.name)}
+                      className="text-text-muted hover:text-red-500 transition-colors shrink-0 self-start"
+                      title="Remove item"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
                   </div>
                 ))
               )}
