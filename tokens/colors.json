@@ -1,0 +1,78 @@
+{
+  "$meta": {
+    "source": "app/globals.css :root (canonical)",
+    "note": "Single source of truth. Resolves drift: alert-red unified to #ba1a1a, gold-glow unified to translucent rgba for shadow use only.",
+    "evolve": "Keep orange primary, purple secondary, emerald success-only. Amber/pink sparing."
+  },
+  "bg": {
+    "warm-white": { "$type": "color", "$value": "#FFFDF9" },
+    "soft-cream": { "$type": "color", "$value": "#FFF4E8" },
+    "light-lavender": { "$type": "color", "$value": "#F3F0FF" },
+    "light-blue": { "$type": "color", "$value": "#EFF6FF" },
+    "light-green": { "$type": "color", "$value": "#ECFDF5" }
+  },
+  "surface": {
+    "DEFAULT": { "$type": "color", "$value": "#f9f9ff" },
+    "dim": { "$type": "color", "$value": "#d3daef" },
+    "bright": { "$type": "color", "$value": "#f9f9ff" },
+    "container-lowest": { "$type": "color", "$value": "#ffffff" },
+    "container-low": { "$type": "color", "$value": "#f1f3ff" },
+    "container": { "$type": "color", "$value": "#e9edff" },
+    "container-high": { "$type": "color", "$value": "#e1e8fd" },
+    "container-highest": { "$type": "color", "$value": "#dce2f7" },
+    "variant": { "$type": "color", "$value": "#dce2f7" },
+    "glass": { "$type": "color", "$value": "rgba(255,255,255,0.88)" }
+  },
+  "primary": {
+    "DEFAULT": { "$type": "color", "$value": "#ab3500" },
+    "on": { "$type": "color", "$value": "#ffffff" },
+    "container": { "$type": "color", "$value": "#ff6b35" },
+    "on-container": { "$type": "color", "$value": "#5f1900" },
+    "inverse": { "$type": "color", "$value": "#ffb59d" },
+    "fixed": { "$type": "color", "$value": "#ffdbd0" },
+    "fixed-dim": { "$type": "color", "$value": "#ffb59d" },
+    "glow": { "$type": "color", "$value": "rgba(255,107,53,0.4)" }
+  },
+  "secondary": {
+    "DEFAULT": { "$type": "color", "$value": "#5c40d2" },
+    "on": { "$type": "color", "$value": "#ffffff" },
+    "container": { "$type": "color", "$value": "#755ced" },
+    "on-container": { "$type": "color", "$value": "#fffbff" },
+    "fixed": { "$type": "color", "$value": "#e6deff" },
+    "on-fixed": { "$type": "color", "$value": "#1b0063" },
+    "on-fixed-variant": { "$type": "color", "$value": "#4624bc" }
+  },
+  "tertiary": {
+    "DEFAULT": { "$type": "color", "$value": "#005ac2" },
+    "on": { "$type": "color", "$value": "#ffffff" },
+    "container": { "$type": "color", "$value": "#6198ff" },
+    "on-container": { "$type": "color", "$value": "#002f6c" }
+  },
+  "accent": {
+    "emerald": { "$type": "color", "$value": "#10B981" },
+    "amber": { "$type": "color", "$value": "#FBBF24" },
+    "pink": { "$type": "color", "$value": "#EC4899" }
+  },
+  "on-surface": {
+    "DEFAULT": { "$type": "color", "$value": "#141b2b" },
+    "variant": { "$type": "color", "$value": "#594139" }
+  },
+  "inverse": {
+    "surface": { "$type": "color", "$value": "#293040" },
+    "on-surface": { "$type": "color", "$value": "#edf0ff" }
+  },
+  "text": {
+    "muted": { "$type": "color", "$value": "#6B7280" },
+    "gray-dark": { "$type": "color", "$value": "#1F2937" }
+  },
+  "error": {
+    "DEFAULT": { "$type": "color", "$value": "#ba1a1a" },
+    "on": { "$type": "color", "$value": "#ffffff" }
+  },
+  "outline": {
+    "DEFAULT": { "$type": "color", "$value": "#8d7168" },
+    "variant": { "$type": "color", "$value": "#e1bfb5" }
+  },
+  "background": { "$type": "color", "$value": "{bg.warm-white}" },
+  "foreground": { "$type": "color", "$value": "{on-surface.DEFAULT}" }
+}

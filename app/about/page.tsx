@@ -3,6 +3,7 @@ import Testimonial from "../components/testimonial";
 import Footers from "../components/footers";
 import ShippingAnimation from "../components/service";
 import Link from "next/link";
+import { Eyebrow, IconArrowRight, IconBox, IconCheck, IconEye, IconGlobe, IconShield, IconSparkle, IconStar, IconTruck, IconZap } from "../components/primitives";
 
 const testimonials = [
   {
@@ -33,49 +34,48 @@ const testimonials = [
 
 const Page = () => {
   return (
-    <div className="cursor-auto select-none text-on-surface min-h-screen items-center overflow-hidden justify-center bg-bg-warm-white font-sans no-scrollbar">
-      {/* Hero Section */}
-      <section className="relative w-full overflow-hidden bg-bg-warm-white pb-16 pt-20 px-4 lg:px-6">
-        <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none -z-10"></div>
-        <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] rounded-full bg-primary-container/10 blur-3xl pointer-events-none -z-10"></div>
+    <div className="text-on-surface min-h-screen items-center overflow-hidden justify-center bg-bg-warm-white font-sans no-scrollbar">
+      {/* Hero Section — left aligned */}
+      <section className="relative w-full overflow-hidden bg-bg-warm-white pb-16 pt-20 px-4 lg:px-6" aria-labelledby="about-heading">
+        <div aria-hidden="true" className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none"></div>
+        <div aria-hidden="true" className="absolute bottom-10 right-10 w-[30rem] h-[30rem] rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 text-xs tracking-widest uppercase mb-6 text-secondary">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary-container"></span>
-            <span>Global Sourcing & Discovery Story</span>
-            <span className="text-outline-variant">•</span>
+          <p className="flex items-center gap-2 text-xs tracking-widest uppercase mb-6 text-secondary font-bold">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary-container" aria-hidden="true"></span>
+            <span>Global Sourcing and Discovery Story</span>
+            <span className="text-outline-variant" aria-hidden="true">•</span>
             <span className="text-text-muted">Est. 2021</span>
-          </div>
+          </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-bg-light-lavender text-secondary text-sm font-bold">
-                🚀 Eliminating Sourcing Borders Daily
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-on-surface tracking-tight leading-tight">
-                Shopping Should Be <br className="hidden sm:inline" />
-                <span className="text-primary-container relative">
-                  Exciting ✨
-                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary" fill="none" viewBox="0 0 250 12">
+              <Eyebrow>Eliminating sourcing borders daily</Eyebrow>
+              <h1 id="about-heading" className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] max-w-[22ch]">
+                Shopping Should Be{" "}
+                <span className="text-primary relative">
+                  Exciting
+                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary" fill="none" viewBox="0 0 250 12" aria-hidden="true">
                     <path d="M3 9C60 3 170 3 247 9" stroke="currentColor" strokeLinecap="round" strokeWidth="4"></path>
                   </svg>
                 </span>
               </h1>
-              <p className="text-lg text-on-surface-variant max-w-2xl">
-                Ligowin Shopper was created to eliminate borders, simplify global product sourcing, and make discovering incredible products joyful, trustworthy, and seamless for everyone.
+              <p className="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                Ligowin Shopper removes borders from product sourcing — verified suppliers, consolidated freight, and tracked doorstep delivery.
               </p>
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link href="/shop" className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-on-primary font-bold text-lg shadow-btn-primary hover:scale-105 transition-all">
-                  Start Exploring →
+                <Link href="/shop" className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary text-on-primary font-bold text-lg shadow-btn-primary hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all">
+                  Start Exploring
+                  <IconArrowRight size={20} />
                 </Link>
-                <a href="#our-process" className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-bg-light-lavender text-secondary font-bold hover:bg-secondary-fixed transition-colors">
-                  ✓ Our Guarantee
+                <a href="#our-process" className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-transparent border border-outline-variant text-secondary font-bold hover:bg-surface-container active:bg-surface-container-high transition-colors">
+                  <IconCheck size={18} />
+                  Our Guarantee
                 </a>
               </div>
               <div className="pt-4 flex flex-wrap items-center gap-6">
                 <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
+                  <div className="flex -space-x-2" aria-hidden="true">
                     <div className="w-8 h-8 rounded-full bg-accent-amber/40 flex items-center justify-center font-bold text-xs text-on-surface ring-2 ring-surface-container-lowest">US</div>
                     <div className="w-8 h-8 rounded-full bg-secondary/30 flex items-center justify-center font-bold text-xs text-on-surface ring-2 ring-surface-container-lowest">CN</div>
                     <div className="w-8 h-8 rounded-full bg-accent-emerald/40 flex items-center justify-center font-bold text-xs text-on-surface ring-2 ring-surface-container-lowest">EU</div>
@@ -83,21 +83,20 @@ const Page = () => {
                   <span className="text-[10px] uppercase tracking-wider text-text-muted font-bold">40+ Origin Ports</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-secondary">
-                  <span className="text-sm">✓</span>
+                  <IconCheck size={14} />
                   <span className="text-xs font-bold text-on-surface">100% Inspected Parcels</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Visual */}
             <div className="lg:col-span-5 relative">
               <div className="relative max-w-lg mx-auto">
-                <div className="absolute -top-4 -right-4 w-full h-full rounded-2xl bg-secondary/10 -rotate-2"></div>
-                <div className="relative rounded-2xl overflow-hidden bg-surface-container-lowest shadow-card">
+                <div aria-hidden="true" className="absolute -top-4 -right-4 w-full h-full rounded-2xl bg-secondary/10 -rotate-2"></div>
+                <div className="relative rounded-2xl overflow-hidden bg-surface-container-lowest shadow-card border border-outline-variant/20">
                   <div className="h-80 bg-gradient-to-br from-bg-light-lavender to-bg-soft-cream flex items-center justify-center">
                     <ShippingAnimation />
                   </div>
-                  <div className="p-4 bg-gradient-to-t from-inverse-surface via-inverse-surface/60 to-transparent absolute bottom-0 inset-x-0 text-inverse-on-surface">
+                  <div className="p-4 bg-inverse-surface absolute bottom-0 inset-x-0 text-inverse-on-surface">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm font-bold text-on-primary">Zero Hassle Unboxing</p>
@@ -107,11 +106,13 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-                <div className="absolute -top-6 -left-6 bg-surface-container-lowest p-3 rounded-xl shadow-card flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-bg-light-lavender flex items-center justify-center text-secondary text-lg">✈️</div>
+                <div className="absolute -top-6 -left-6 bg-surface-container-lowest p-3 rounded-xl shadow-card border border-outline-variant/20 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-bg-light-lavender flex items-center justify-center text-secondary">
+                    <IconTruck size={20} />
+                  </div>
                   <div>
                     <p className="text-[10px] text-text-muted uppercase tracking-wider font-bold">Air Cargo Lane</p>
-                    <p className="text-xs font-bold text-on-surface">Guangzhou → Global Doorstep</p>
+                    <p className="text-xs font-bold text-on-surface">Guangzhou to Global Doorstep</p>
                   </div>
                 </div>
               </div>
@@ -121,151 +122,162 @@ const Page = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="w-full py-16 bg-bg-soft-cream px-4 lg:px-6">
+      <section className="w-full py-16 bg-bg-soft-cream px-4 lg:px-6" aria-labelledby="purpose-heading">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl mb-10">
             <span className="text-xs uppercase tracking-widest text-primary font-bold">Purpose Driven Commerce</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1">
+            <h2 id="purpose-heading" className="text-4xl md:text-5xl font-extrabold mt-2 tracking-tight leading-none">
               Engineered to Democratize International Trade
             </h2>
-            <p className="text-on-surface-variant mt-2">
-              We strip away the convoluted layers of cross-border commerce so independent creators, local retailers, and passionate shoppers get direct global power.
+            <p className="text-on-surface-variant mt-3 text-base">
+              We remove the layered complexity of cross-border commerce so retailers and shoppers get direct global access.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-8 rounded-2xl bg-surface-container-lowest shadow-card flex flex-col justify-between relative overflow-hidden group hover:shadow-card-hover transition-all">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-bl-full pointer-events-none"></div>
+            <article className="p-8 rounded-2xl bg-secondary text-on-secondary shadow-elevated flex flex-col justify-between relative overflow-hidden">
               <div>
-                <div className="w-14 h-14 rounded-xl bg-bg-soft-cream text-primary-container flex items-center justify-center mb-6 text-2xl">🎯</div>
-                <span className="text-xs tracking-widest uppercase text-primary font-bold">Our Mission</span>
-                <h3 className="text-xl font-bold text-on-surface mt-1">Making Global Sourcing Effortless.</h3>
-                <p className="text-on-surface-variant mt-3 leading-relaxed text-sm">
-                  Connecting everyday shoppers and growing merchants directly to premium manufacturers and curated trends worldwide. We verify suppliers on-ground, consolidate bulk orders, and provide multi-currency clarity at check-out.
+                <div className="w-14 h-14 rounded-xl bg-on-secondary/15 text-on-secondary flex items-center justify-center mb-6" aria-hidden="true">
+                  <IconZap size={24} />
+                </div>
+                <span className="text-xs tracking-widest uppercase font-bold opacity-80">Our Mission</span>
+                <h3 className="text-xl font-bold mt-1">Making Global Sourcing Effortless.</h3>
+                <p className="mt-3 leading-relaxed text-sm opacity-90">
+                  Connecting shoppers and merchants directly to premium manufacturers. We verify suppliers on-ground, consolidate bulk orders, and show multi-currency clarity at checkout.
                 </p>
               </div>
-              <div className="pt-6 flex items-center gap-2 text-primary text-sm font-bold">
+              <p className="pt-6 flex items-center gap-2 text-sm font-bold">
                 <span>Direct factory access for everyone</span>
-                <span>✓</span>
-              </div>
-            </div>
+                <IconCheck size={16} />
+              </p>
+            </article>
 
-            <div className="p-8 rounded-2xl bg-surface-container-lowest shadow-card flex flex-col justify-between relative overflow-hidden group hover:shadow-card-hover transition-all">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-bg-light-lavender rounded-bl-full pointer-events-none"></div>
+            <article className="p-8 rounded-2xl bg-surface-container-lowest border border-outline-variant/20 shadow-card flex flex-col justify-between relative overflow-hidden">
               <div>
-                <div className="w-14 h-14 rounded-xl bg-bg-light-lavender text-secondary flex items-center justify-center mb-6 text-2xl">🌍</div>
+                <div className="w-14 h-14 rounded-xl bg-bg-light-lavender text-secondary flex items-center justify-center mb-6" aria-hidden="true">
+                  <IconGlobe size={24} />
+                </div>
                 <span className="text-xs tracking-widest uppercase text-secondary font-bold">Our Vision</span>
                 <h3 className="text-xl font-bold text-on-surface mt-1">A World Where Any Product Is Within Reach.</h3>
                 <p className="text-on-surface-variant mt-3 leading-relaxed text-sm">
-                  Bringing the excitement of international discovery straight to your door with zero logistics headache. Whether you are ordering a single boutique gadget or scaling your fashion brand, the globe is your personal marketplace.
+                  International discovery delivered to your door with zero logistics headache — from a single gadget to full fashion inventory.
                 </p>
               </div>
-              <div className="pt-6 flex items-center gap-2 text-secondary text-sm font-bold">
+              <p className="pt-6 flex items-center gap-2 text-secondary text-sm font-bold">
                 <span>Frictionless borderless commerce</span>
-                <span>→</span>
-              </div>
-            </div>
+                <IconArrowRight size={16} />
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6">
+      {/* Timeline — one highlighted lead */}
+      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6" aria-labelledby="journey-heading">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="max-w-2xl mb-12">
             <span className="text-xs uppercase tracking-widest text-secondary font-bold">The Evolution</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1">
-              The Journey from Frustration to Global Freedom
+            <h2 id="journey-heading" className="text-4xl md:text-5xl font-extrabold mt-2 tracking-tight leading-none">
+              From Frustration to Global Freedom
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { year: "2021", title: "The Genesis", desc: "Born out of frustration with delayed overseas packages, opaque shipping surcharges, and high middlemen fees.", color: "bg-bg-soft-cream text-primary-container", tag: "1st Sourcing Route Tested" },
-              { year: "2022", title: "Direct Sourcing Hubs", desc: "Established physical quality inspection checkpoints in Guangzhou and Yiwu to inspect goods before export.", color: "bg-bg-light-lavender text-secondary", tag: "200+ Verified Suppliers" },
-              { year: "2023", title: "Seamless Mobile Experience", desc: "Launched instant live tracking, multi-currency checkout, and automated customs clearance.", color: "bg-bg-soft-cream text-primary-container", tag: "Instant Customs API" },
-              { year: "2024+", title: "Global Shopper Family", desc: "Over 150,000+ satisfied customers across 40+ countries discovering high-value goods daily.", color: "bg-secondary text-on-secondary", tag: "150K+ Happy Shoppers", highlighted: true },
+              { year: "2021", title: "The Genesis", desc: "Born from delayed parcels, opaque surcharges, and middlemen fees.", tag: "1st Sourcing Route Tested" },
+              { year: "2022", title: "Direct Sourcing Hubs", desc: "Inspection checkpoints in Guangzhou and Yiwu before export.", tag: "200+ Verified Suppliers" },
+              { year: "2023", title: "Seamless Mobile Experience", desc: "Live tracking, multi-currency checkout, automated customs.", tag: "Instant Customs API" },
+              { year: "2024+", title: "Global Shopper Family", desc: "150,000+ customers across 40+ countries discovering daily.", tag: "150K+ Happy Shoppers", highlighted: true },
             ].map((item, i) => (
-              <div key={i} className={`p-6 rounded-2xl ${item.highlighted ? "bg-secondary text-on-secondary shadow-elevated" : "bg-surface-container-lowest shadow-card"} flex flex-col justify-between hover:-translate-y-1 transition-transform`}>
+              <article key={i} className={`p-6 rounded-2xl border border-outline-variant/20 flex flex-col justify-between hover:-translate-y-1 transition-transform ${item.highlighted ? "bg-secondary text-on-secondary shadow-elevated" : "bg-surface-container-lowest shadow-card"}`}>
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${item.highlighted ? "bg-primary-container text-on-primary" : "bg-surface-container text-on-surface"}`}>{item.year}</span>
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${item.highlighted ? "bg-primary text-on-primary" : "bg-surface-container text-on-surface"}`}>{item.year}</span>
                   </div>
                   <h3 className={`text-lg font-bold ${item.highlighted ? "text-on-secondary" : "text-on-surface"}`}>{item.title}</h3>
-                  <p className={`mt-2 text-sm ${item.highlighted ? "text-surface-dim" : "text-on-surface-variant"}`}>{item.desc}</p>
+                  <p className={`mt-2 text-sm leading-relaxed ${item.highlighted ? "opacity-90" : "text-on-surface-variant"}`}>{item.desc}</p>
                 </div>
-                <div className={`mt-4 p-2 rounded-lg text-xs font-bold ${item.highlighted ? "bg-on-secondary/10 text-accent-amber" : "bg-surface-container-low text-primary"}`}>{item.tag}</div>
-              </div>
+                <p className={`mt-4 p-2 rounded-lg text-xs font-bold ${item.highlighted ? "bg-on-secondary/10 text-accent-amber" : "bg-surface-container-low text-primary"}`}>{item.tag}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="w-full py-16 bg-bg-light-lavender/40 px-4 lg:px-6">
+      {/* Core Values — wide lead tile */}
+      <section className="w-full py-16 bg-bg-light-lavender/40 px-4 lg:px-6" aria-labelledby="values-heading">
         <div className="max-w-6xl mx-auto">
           <span className="text-xs uppercase tracking-widest text-primary font-bold">Our Philosophy</span>
-          <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1 mb-8">
+          <h2 id="values-heading" className="text-4xl md:text-5xl font-extrabold mt-2 mb-8 tracking-tight leading-none">
             What Keeps Ligowin Moving Fast
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: "🛡️", title: "Trust & Transparency", desc: "Honest pricing, zero hidden border surcharges, real-time GPS tracking checkpoints.", tag: "Zero Hidden Fees", color: "bg-bg-light-green text-accent-emerald" },
-              { icon: "🏅", title: "Curated Quality", desc: "Every single supplier is physically visited and verified by our boots-on-the-ground auditors.", tag: "Inspected Prior to Flight", color: "bg-bg-soft-cream text-primary-container" },
-              { icon: "👆", title: "Effortless Simplicity", desc: "International sourcing made as fast and intuitive as ordering your favorite local takeaway.", tag: "1-Click Multi-Source Cart", color: "bg-bg-light-blue text-tertiary" },
-              { icon: "😊", title: "Customer Happiness", desc: "24/7 empathetic human support via WhatsApp and live desk. No cold automated bots.", tag: "Real Humans 24/7", color: "bg-pink-50 text-accent-pink" },
-              { icon: "🧠", title: "Relentless Innovation", desc: "Smarter logistics routing, dynamic micro-freight packaging algorithms, and AI supply matching.", tag: "40% Faster Routing", color: "bg-secondary text-on-secondary", wide: true },
+              { icon: <IconShield size={20} />, title: "Trust & Transparency", desc: "Honest pricing, zero hidden surcharges, GPS tracking checkpoints.", tag: "Zero Hidden Fees" },
+              { icon: <IconStar size={20} />, title: "Curated Quality", desc: "Every supplier physically visited and verified by on-ground auditors.", tag: "Inspected Prior to Flight" },
+              { icon: <IconEye size={20} />, title: "Effortless Simplicity", desc: "International sourcing as intuitive as ordering local takeaway.", tag: "1-Click Multi-Source Cart" },
+              { icon: <IconSparkle size={20} />, title: "Customer Happiness", desc: "24/7 human support via WhatsApp. No cold automated bots.", tag: "Real Humans 24/7" },
             ].map((item, i) => (
-              <div key={i} className={`p-6 rounded-2xl ${item.wide ? "bg-secondary text-on-secondary shadow-elevated lg:col-span-2" : "bg-surface-container-lowest shadow-card"} flex flex-col justify-between`}>
+              <article key={i} className="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/20 shadow-card flex flex-col justify-between">
                 <div>
-                  <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center mb-4 text-xl`}>{item.icon}</div>
-                  <h3 className={`text-lg font-bold ${item.wide ? "text-on-secondary" : "text-on-surface"}`}>{item.title}</h3>
-                  <p className={`mt-2 text-sm ${item.wide ? "text-surface-container-high" : "text-on-surface-variant"}`}>{item.desc}</p>
+                  <div className="w-12 h-12 rounded-xl bg-bg-light-lavender text-secondary flex items-center justify-center mb-4" aria-hidden="true">{item.icon}</div>
+                  <h3 className="text-lg font-bold text-on-surface">{item.title}</h3>
+                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
                 </div>
-                <div className={`mt-4 text-[10px] font-bold uppercase tracking-wider ${item.wide ? "text-accent-amber" : "text-secondary"}`}>{item.tag}</div>
-              </div>
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-secondary">{item.tag}</p>
+              </article>
             ))}
+            <article className="p-6 rounded-2xl bg-secondary text-on-secondary shadow-elevated md:col-span-2 lg:col-span-2 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-on-secondary/15 text-on-secondary flex items-center justify-center mb-4" aria-hidden="true">
+                  <IconZap size={20} />
+                </div>
+                <h3 className="text-lg font-bold">Relentless Innovation</h3>
+                <p className="mt-2 text-sm opacity-90 leading-relaxed">Smarter routing, micro-freight packaging, and supply matching — 40% faster on average.</p>
+              </div>
+              <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-accent-amber">40% Faster Routing</p>
+            </article>
           </div>
         </div>
       </section>
 
       {/* Our Services */}
-      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6" id="our-process">
+      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6" id="our-process" aria-labelledby="services-heading">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-10">
             <span className="text-xs uppercase tracking-widest text-primary font-bold">Rigorous Excellence</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface mt-1">
+            <h2 id="services-heading" className="text-4xl md:text-5xl font-extrabold mt-2 tracking-tight leading-none">
               How We Ensure You Get the Best
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { num: "01", icon: "🔍", title: "Supplier Verification", desc: "Legitimacy checks, factory audits, business registry validation, and sample history review.", tag: "Stage 1: Identity & Quality", color: "text-secondary" },
-              { num: "02", icon: "🔬", title: "Physical Sample Inspection", desc: "High-resolution photo logs, material testing, functional diagnostics, and defect rejection on-site.", tag: "Stage 2: Hands-on Audit", color: "text-primary-container" },
-              { num: "03", icon: "📦", title: "Secure Consolidation", desc: "Multiple orders repackaged into weatherproof, reinforced boxes to minimize volumetric freight fees.", tag: "Stage 3: Impact Packing", color: "text-tertiary" },
-              { num: "04", icon: "🚚", title: "Fast Air Cargo & Delivery", desc: "Priority flight lanes with end-to-end GPS handoff straight to your residential or store address.", tag: "Stage 4: Doorstep Arrival", color: "text-accent-emerald" },
+              { num: "01", icon: <IconEye size={20} />, title: "Supplier Verification", desc: "Factory audits, registry validation, and sample history review.", tag: "Stage 1: Identity and Quality" },
+              { num: "02", icon: <IconBox size={20} />, title: "Physical Sample Inspection", desc: "Photo logs, material testing, and on-site defect rejection.", tag: "Stage 2: Hands-on Audit" },
+              { num: "03", icon: <IconTruck size={20} />, title: "Secure Consolidation", desc: "Orders repackaged into reinforced boxes to cut freight fees.", tag: "Stage 3: Impact Packing" },
+              { num: "04", icon: <IconCheck size={20} />, title: "Fast Air Cargo and Delivery", desc: "Priority lanes with GPS handoff to your address.", tag: "Stage 4: Doorstep Arrival" },
             ].map((item, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-surface-container-lowest shadow-card flex flex-col justify-between">
+              <li key={i} className="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/20 shadow-card flex flex-col justify-between">
                 <div className="space-y-3">
-                  <span className={`text-3xl font-extrabold ${item.color}`}>{item.num}</span>
-                  <div className="text-xl">{item.icon}</div>
+                  <span className="text-3xl font-extrabold text-secondary" aria-hidden="true">{item.num}</span>
+                  <div className="text-secondary" aria-hidden="true">{item.icon}</div>
                   <h3 className="text-sm font-bold text-on-surface">{item.title}</h3>
-                  <p className="text-xs text-on-surface-variant">{item.desc}</p>
+                  <p className="text-xs text-on-surface-variant leading-relaxed">{item.desc}</p>
                 </div>
-                <div className={`mt-4 pt-3 text-[10px] font-bold uppercase tracking-wider ${item.color}`}>{item.tag}</div>
-              </div>
+                <p className="mt-4 pt-3 text-[10px] font-bold uppercase tracking-wider text-secondary">{item.tag}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="w-full py-16 bg-bg-light-lavender/40 px-4 lg:px-6">
+      <section className="w-full py-16 bg-bg-light-lavender/40 px-4 lg:px-6" aria-labelledby="about-testimonials">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-on-surface text-center mb-8">
-            Testimonial
+          <h2 id="about-testimonials" className="text-4xl font-extrabold tracking-tight leading-none mb-8">
+            Customer Stories
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {testimonials.map((items, index) => (
@@ -278,23 +290,22 @@ const Page = () => {
       </section>
 
       {/* CTA */}
-      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6">
+      <section className="w-full py-16 bg-bg-warm-white px-4 lg:px-6" aria-labelledby="cta-heading">
         <div className="max-w-6xl mx-auto">
-          <div className="relative rounded-3xl bg-gradient-to-br from-secondary via-secondary to-secondary text-on-secondary p-8 lg:p-12 overflow-hidden shadow-elevated">
-            <div className="absolute -right-16 -top-16 w-96 h-96 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
+          <div className="relative rounded-3xl bg-secondary text-on-secondary p-8 lg:p-12 overflow-hidden shadow-elevated">
+            <div aria-hidden="true" className="absolute -right-16 -top-16 w-96 h-96 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
             <div className="relative z-10 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-on-secondary/15 text-on-secondary text-sm font-bold mb-4">
-                🛍️ Your Global Discovery Starts Here
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-on-secondary tracking-tight">
+              <Eyebrow>Your global discovery starts here</Eyebrow>
+              <h2 id="cta-heading" className="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
                 Experience the Ligowin Difference Today
               </h2>
-              <p className="text-surface-container-high mt-3">
-                Ready to find unbeatable products sourced directly from international manufacturing centers? Zero guesswork, clear pricing, and door-to-door assurance.
+              <p className="text-surface-container-high mt-3 leading-relaxed">
+                Unbeatable factory-direct products with clear pricing and door-to-door assurance.
               </p>
               <div className="flex flex-wrap items-center gap-4 mt-6">
-                <Link href="/shop" className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-on-primary font-bold shadow-btn-primary hover:bg-primary hover:scale-105 transition-all">
-                  Start Shopping →
+                <Link href="/shop" className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary text-on-primary font-bold shadow-btn-primary hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                  Start Shopping
+                  <IconArrowRight size={18} />
                 </Link>
                 <Link href="/shop" className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-surface-container-lowest text-on-surface font-bold hover:bg-bg-warm-white transition-colors">
                   Explore Catalog

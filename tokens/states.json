@@ -1,0 +1,28 @@
+{
+  "opacity": {
+    "disabled": { "$type": "opacity", "$value": 0.5 },
+    "scrim": { "$type": "opacity", "$value": 0.4 },
+    "hover-tint": { "$type": "opacity", "$value": 0.08 }
+  },
+  "blur": {
+    "sm": { "$type": "dimension", "$value": "4px" },
+    "md": { "$type": "dimension", "$value": "12px" },
+    "xl": { "$type": "dimension", "$value": "24px" }
+  },
+  "sizing": {
+    "control-sm": { "$type": "dimension", "$value": "32px" },
+    "control-md": { "$type": "dimension", "$value": "40px" },
+    "control-lg": { "$type": "dimension", "$value": "48px" },
+    "icon-sm": { "$type": "dimension", "$value": "16px" },
+    "icon-md": { "$type": "dimension", "$value": "20px" },
+    "icon-lg": { "$type": "dimension", "$value": "24px" },
+    "target-min": { "$type": "dimension", "$value": "24px" },
+    "target-preferred": { "$type": "dimension", "$value": "44px" }
+  },
+  "state": {
+    "focus-ring": { "$type": "color", "$value": "rgba(92,64,210,0.35)" },
+    "selected-bg": { "$type": "color", "$value": "#e6deff" },
+    "disabled-opacity": { "$type": "opacity", "$value": 0.5 },
+    "error-border": { "$type": "color", "$value": "#ba1a1a" }
+  }
+}

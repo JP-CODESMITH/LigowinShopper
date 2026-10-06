@@ -5,6 +5,7 @@ import { JSX } from "react";
 import Testimonial from "./components/testimonial";
 import Reasons from "./components/reasons";
 import Faq from "./components/faq";
+import { Eyebrow, IconHeart } from "./components/primitives";
 
 const testimonials = [
   {
@@ -53,60 +54,66 @@ const testimonials = [
 
 export default function Home(): JSX.Element {
   return (
-    <div className="cursor-auto select-none items-center overflow-hidden justify-center bg-bg-warm-white font-sans">
+    <div className="items-center overflow-hidden justify-center bg-bg-warm-white font-sans text-on-surface">
       <Hero />
 
-      {/* Stats Section */}
-      <section className="bg-bg-soft-cream py-12 px-4 lg:px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-on-surface mb-2">
-            Trusted by <span className="text-primary-container">Shoppers Across Nigeria</span>
-          </h2>
-          <p className="text-text-muted mb-8 max-w-xl mx-auto text-sm">
-            We've helped hundreds of customers import quality products from China with speed, trust and reliability.
-          </p>
-
-          <div className="grid gap-4 sm:grid-cols-3 max-w-3xl mx-auto">
-            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-surface-container-lowest shadow-card">
-              <dt className="mb-2 text-3xl font-extrabold text-primary-container">5K+</dt>
-              <dd className="text-text-muted text-sm">Successful Deliveries</dd>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-surface-container-lowest shadow-card">
-              <dt className="mb-2 text-3xl font-extrabold text-secondary">1K+</dt>
-              <dd className="text-text-muted text-sm">Active Customers</dd>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-surface-container-lowest shadow-card">
-              <dt className="mb-2 text-3xl font-extrabold text-accent-emerald">99%</dt>
-              <dd className="text-text-muted text-sm">Customer Satisfaction</dd>
-            </div>
+      {/* Proof Strip — one lead metric */}
+      <section className="bg-bg-soft-cream py-12 px-4 lg:px-6" aria-labelledby="proof-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl">
+            <Eyebrow tone="primary">Trusted across Nigeria</Eyebrow>
+            <h2 id="proof-heading" className="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
+              5K+ deliveries, <span className="text-primary">99% satisfaction</span>
+            </h2>
+            <p className="text-text-muted mt-3 text-base max-w-xl">
+              Hundreds of customers import quality products from China with tracked speed and reliability.
+            </p>
           </div>
+
+          <dl className="mt-8 grid gap-4 sm:grid-cols-3 max-w-3xl">
+            <div className="flex flex-col items-start p-6 rounded-2xl bg-secondary text-on-secondary shadow-elevated">
+              <dt className="order-2 text-sm opacity-90">Successful Deliveries</dt>
+              <dd className="order-1 mb-1 text-4xl font-extrabold">5K+</dd>
+            </div>
+            <div className="flex flex-col items-start p-6 rounded-2xl bg-surface-container-lowest shadow-card border border-outline-variant/20">
+              <dt className="order-2 text-sm text-text-muted">Active Customers</dt>
+              <dd className="order-1 mb-1 text-4xl font-extrabold text-on-surface">1K+</dd>
+            </div>
+            <div className="flex flex-col items-start p-6 rounded-2xl bg-surface-container-lowest shadow-card border border-outline-variant/20">
+              <dt className="order-2 text-sm text-text-muted">Customer Satisfaction</dt>
+              <dd className="order-1 mb-1 text-4xl font-extrabold text-on-surface">99%</dd>
+            </div>
+          </dl>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-16 px-4 lg:px-6 bg-surface">
+      {/* How It Works — stepped rail, wayfinding accent only */}
+      <section className="py-16 px-4 lg:px-6 bg-surface" aria-labelledby="how-heading">
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-center text-2xl md:text-3xl font-bold text-on-surface mb-8">
-            How it <span className="text-primary-container">Works</span>
-          </h1>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-surface-container-lowest shadow-card">
-              <div className="w-14 h-14 rounded-full bg-primary-container text-on-primary flex items-center justify-center mb-4 text-2xl">1</div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">Place your order</h3>
-              <p className="text-text-muted text-sm">Choose products from our website or contact us on WhatsApp</p>
-            </div>
-            <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-surface-container-lowest shadow-card">
-              <div className="w-14 h-14 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-4 text-2xl">2</div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">We procure from China</h3>
-              <p className="text-text-muted text-sm">We source and verify your products directly from trusted suppliers</p>
-            </div>
-            <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-surface-container-lowest shadow-card">
-              <div className="w-14 h-14 rounded-full bg-accent-emerald text-on-primary flex items-center justify-center mb-4 text-2xl">3</div>
-              <h3 className="text-lg font-bold text-on-surface mb-2">Doorstep delivery in Nigeria</h3>
-              <p className="text-text-muted text-sm">We ship safely and deliver to your location anywhere in Nigeria</p>
-            </div>
+          <div className="max-w-2xl mb-8">
+            <Eyebrow>Simple process</Eyebrow>
+            <h2 id="how-heading" className="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
+              How it <span className="text-primary">Works</span>
+            </h2>
           </div>
+
+          <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <li className="flex flex-col items-start text-left p-6 rounded-2xl bg-surface-container-lowest shadow-card border border-outline-variant/20">
+              <span aria-hidden="true" className="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center mb-4 text-2xl font-extrabold">1</span>
+              <h3 className="text-lg font-bold text-on-surface mb-2">Place your order</h3>
+              <p className="text-text-muted text-sm leading-relaxed">Choose products from our catalog or contact us on WhatsApp.</p>
+            </li>
+            <li className="flex flex-col items-start text-left p-6 rounded-2xl bg-surface-container-lowest shadow-card border border-outline-variant/20">
+              <span aria-hidden="true" className="w-14 h-14 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-4 text-2xl font-extrabold">2</span>
+              <h3 className="text-lg font-bold text-on-surface mb-2">We procure from China</h3>
+              <p className="text-text-muted text-sm leading-relaxed">We source and inspect your products with trusted suppliers.</p>
+            </li>
+            <li className="flex flex-col items-start text-left p-6 rounded-2xl bg-surface-container-lowest shadow-card border border-outline-variant/20">
+              <span aria-hidden="true" className="w-14 h-14 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-4 text-2xl font-extrabold">3</span>
+              <h3 className="text-lg font-bold text-on-surface mb-2">Doorstep delivery in Nigeria</h3>
+              <p className="text-text-muted text-sm leading-relaxed">Tracked shipping to your location anywhere in Nigeria.</p>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -116,16 +123,16 @@ export default function Home(): JSX.Element {
         <Reasons />
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 px-4 lg:px-6 bg-bg-light-lavender/40">
+      {/* Testimonials — left-aligned header */}
+      <section className="py-16 px-4 lg:px-6 bg-bg-light-lavender/40" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest shadow-sm mb-3">
-              <span className="text-xs text-accent-pink">❤</span>
+          <div className="mb-10 max-w-2xl">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest shadow-sm mb-3">
+              <IconHeart size={14} className="text-primary" />
               <span className="text-xs text-secondary uppercase tracking-wider font-bold">Testimonials</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface">
-              What Our <span className="text-primary-container">Customers</span> Say
+            </span>
+            <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none">
+              What Our <span className="text-primary">Customers</span> Say
             </h2>
           </div>
 
@@ -147,10 +154,7 @@ export default function Home(): JSX.Element {
         </div>
       </section>
 
-      {/* FAQ */}
       <Faq />
-
-      {/* Footer */}
       <Footers />
     </div>
   );

@@ -3,42 +3,58 @@ import React, { JSX, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { adverts } from "@/public/advert/advert";
+import { Eyebrow, IconArrowRight, IconCart, IconStar } from "./primitives";
 
 const LandingShowCase = (): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  function scrollBy(dir: 1 | -1) {
+    containerRef.current?.scrollBy({ left: dir * 320, behavior: "smooth" });
+  }
+
   return (
-    <section className="w-full flex flex-col justify-center items-center py-16 px-4 lg:px-6 bg-bg-warm-white" id="categories">
+    <section className="w-full flex flex-col justify-center items-start py-16 px-4 lg:px-6 bg-bg-warm-white" id="categories" aria-labelledby="categories-heading">
       <div className="max-w-7xl mx-auto w-full flex flex-col gap-8">
-        {/* Section Header */}
+        {/* Section Header — left aligned, one thing leads */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-bg-light-lavender text-secondary text-xs font-bold uppercase tracking-wider mb-2">
-              Curated Aisles
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface tracking-tight">
-              Arriving <span className="text-primary-container">Soon</span>
+          <div className="max-w-2xl">
+            <Eyebrow>Curated Aisles</Eyebrow>
+            <h2 id="categories-heading" className="mt-2 text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-none">
+              Arriving <span className="text-primary">Soon</span>
             </h2>
-            <p className="text-text-muted text-sm mt-1">
-              Worldwide catalog parsed directly from premier manufacturing hubs.
+            <p className="text-text-muted text-base mt-2">
+              A focused edit from premier manufacturing hubs — verified before it ships.
             </p>
           </div>
-          <Link
-            href="/shop"
-            className="inline-flex items-center gap-2 font-bold text-secondary hover:text-primary transition-colors group"
-          >
-            <span>View All Categories</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </Link>
+          <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2 mr-2" role="group" aria-label="Scroll categories">
+              <button onClick={() => scrollBy(-1)} aria-label="Scroll categories left" className="w-10 h-10 rounded-full border border-outline-variant text-on-surface flex items-center justify-center hover:bg-surface-container active:bg-surface-container-high transition-colors">
+                <span aria-hidden="true">←</span>
+              </button>
+              <button onClick={() => scrollBy(1)} aria-label="Scroll categories right" className="w-10 h-10 rounded-full border border-outline-variant text-on-surface flex items-center justify-center hover:bg-surface-container active:bg-surface-container-high transition-colors">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 font-bold text-secondary hover:text-primary transition-colors group rounded-md px-1 py-0.5"
+            >
+              <span>View All Categories</span>
+              <IconArrowRight size={16} />
+            </Link>
+          </div>
         </div>
 
-        {/* Product Grid */}
+        {/* Product Rail */}
         <div
-          className="w-full flex gap-4 overflow-x-auto scroll-smooth no-scrollbar"
+          className="w-full flex gap-4 overflow-x-auto scroll-smooth no-scrollbar pb-1"
           ref={containerRef}
+          role="region"
+          aria-label="Upcoming products"
+          tabIndex={0}
         >
           {adverts.map((item, index) => (
-            <div
+            <article
               key={index}
               className="rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-3 shadow-card hover:shadow-card-hover transition-all flex-shrink-0 w-64 sm:w-72 group"
             >
@@ -63,8 +79,10 @@ const LandingShowCase = (): JSX.Element => {
                   {item.name}
                 </h3>
 
-                <div className="mt-1.5 flex items-center gap-1">
-                  <div className="flex text-accent-amber text-xs">★★★★★</div>
+                <div className="mt-1.5 flex items-center gap-1" aria-label="Rated 4.9 out of 5">
+                  <div className="flex text-primary text-xs" aria-hidden="true">
+                    <IconStar size={12} /><IconStar size={12} /><IconStar size={12} /><IconStar size={12} /><IconStar size={12} />
+                  </div>
                   <p className="text-xs font-bold text-on-surface">4.9</p>
                 </div>
 
@@ -73,26 +91,27 @@ const LandingShowCase = (): JSX.Element => {
                 </p>
 
                 <div className="mt-3 flex items-center justify-between">
-                  <p className="text-lg font-extrabold text-primary-container">
-                    $899
+                  <p className="text-lg font-extrabold text-primary">
+                    ₦899,000
                   </p>
                   <Link
                     href="/shop"
-                    className="rounded-full bg-primary-container px-4 py-1.5 text-xs font-bold text-on-primary hover:bg-primary shadow-btn-primary transition-all"
+                    className="rounded-full bg-primary px-4 py-1.5 text-xs font-bold text-on-primary hover:brightness-95 active:brightness-90 shadow-btn-primary transition-all"
                   >
                     Preorder
                   </Link>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
         <Link
           href="/shop"
-          className="text-lg flex gap-2.5 pt-3 justify-center items-center bg-primary-container hover:bg-primary text-on-primary font-bold py-2.5 px-8 rounded-full shadow-btn-primary hover:scale-105 transition-all w-fit mx-auto"
+          className="text-lg flex gap-2.5 pt-3 justify-center items-center bg-primary hover:brightness-95 active:brightness-90 text-on-primary font-bold py-2.5 px-8 rounded-full shadow-btn-primary hover:-translate-y-0.5 transition-all w-fit"
         >
-          🛒 Shop More
+          <IconCart size={20} />
+          Shop More
         </Link>
       </div>
     </section>

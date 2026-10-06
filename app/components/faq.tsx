@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { Eyebrow } from "./primitives";
 
 const faqData = [
   {
@@ -37,23 +38,18 @@ export default function Faq() {
   };
 
   return (
-    <section className="py-16 px-4 lg:px-6 bg-bg-warm-white">
+    <section className="py-16 px-4 lg:px-6 bg-bg-warm-white" aria-labelledby="faq-heading">
       <div className="max-w-3xl mx-auto">
-        {/* Title */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest shadow-sm mb-3">
-            <span className="text-secondary text-sm">?</span>
-            <span className="text-xs text-secondary uppercase tracking-wider font-bold">Quick Answers</span>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-on-surface tracking-tight">
-            Frequently Asked <span className="text-primary-container">Questions</span>
+        <div className="mb-10 max-w-2xl">
+          <Eyebrow>Quick Answers</Eyebrow>
+          <h2 id="faq-heading" className="mt-2 text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-none">
+            Frequently Asked <span className="text-primary">Questions</span>
           </h2>
-          <p className="text-text-muted mt-2 text-sm">
-            Everything you need to know about Ligowin Shopper
+          <p className="text-text-muted mt-3 text-base">
+            Everything you need to know about sourcing with Ligowin Shopper.
           </p>
         </div>
 
-        {/* FAQ List */}
         <div className="flex flex-col gap-3">
           {faqData.map((item, index) => {
             const isOpen = activeIndex === index;
@@ -63,28 +59,36 @@ export default function Faq() {
                 key={index}
                 className="border border-outline-variant/20 rounded-xl bg-surface-container-lowest shadow-card overflow-hidden"
               >
-                <button
-                  onClick={() => toggle(index)}
-                  className="w-full flex justify-between items-center p-5 text-left"
-                >
-                  <p className="text-sm font-semibold text-on-surface pr-4">
-                    {item.question}
-                  </p>
-                  <span
-                    className={`w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                <h3>
+                  <button
+                    onClick={() => toggle(index)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${index}`}
+                    id={`faq-button-${index}`}
+                    className="w-full flex justify-between items-center p-5 text-left hover:bg-surface-container-low active:bg-surface-container transition-colors rounded-xl"
                   >
-                    <svg className="w-4 h-4 text-on-surface" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </span>
-                </button>
+                    <span className="text-sm font-semibold text-on-surface pr-4">
+                      {item.question}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className={`w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      <svg className="w-4 h-4 text-on-surface" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
 
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                  }`}
+                  id={`faq-panel-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-button-${index}`}
+                  hidden={!isOpen}
+                  className="overflow-hidden"
                 >
                   <p className="px-5 pb-5 text-text-muted text-sm leading-relaxed">
                     {item.answer}

@@ -1,0 +1,14 @@
+{
+  "$meta": { "mode": "light-only", "dark": "reserved, not shipped" },
+  "theme": {
+    "light": { "$type": "string", "$value": ":root maps 1:1 to colors.json" },
+    "dark": { "$type": "string", "$value": "reserved for future inverse-surface swap" }
+  },
+  "intent": {
+    "action-primary": { "$type": "string", "$value": "primary bg (#ab3500) + on-primary white text — white-on-container fails WCAG, so container orange is decorative-only on light" },
+    "action-secondary": { "$type": "string", "$value": "transparent/outline, dark text (Explore, Continue Shopping)" },
+    "action-destructive": { "$type": "string", "$value": "error bg + on-error text (Remove item) — never blue" },
+    "action-success": { "$type": "string", "$value": "accent.emerald (In Stock, WhatsApp order, Live status)" },
+    "wayfinding": { "$type": "string", "$value": "secondary (active nav, category pills, links)" }
+  }
+}

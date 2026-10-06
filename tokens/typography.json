@@ -1,0 +1,36 @@
+{
+  "$meta": { "base": "Plus Jakarta Sans body/display, Space Grotesk labels" },
+  "font": {
+    "sans": { "$type": "fontFamily", "$value": "var(--font-plus-jakarta), system-ui, sans-serif" },
+    "display": { "$type": "fontFamily", "$value": "var(--font-plus-jakarta), system-ui, sans-serif" },
+    "label": { "$type": "fontFamily", "$value": "var(--font-space-grotesk), system-ui, sans-serif" }
+  },
+  "size": {
+    "display-lg": { "$type": "fontSize", "$value": "3.75rem" },
+    "display-md": { "$type": "fontSize", "$value": "3rem" },
+    "display-sm": { "$type": "fontSize", "$value": "2.25rem" },
+    "heading-lg": { "$type": "fontSize", "$value": "1.875rem" },
+    "heading-md": { "$type": "fontSize", "$value": "1.5rem" },
+    "heading-sm": { "$type": "fontSize", "$value": "1.125rem" },
+    "body-lg": { "$type": "fontSize", "$value": "1.125rem" },
+    "body-md": { "$type": "fontSize", "$value": "1rem" },
+    "body-sm": { "$type": "fontSize", "$value": "0.875rem" },
+    "label": { "$type": "fontSize", "$value": "0.75rem" }
+  },
+  "weight": {
+    "regular": { "$type": "fontWeight", "$value": 400 },
+    "medium": { "$type": "fontWeight", "$value": 500 },
+    "semibold": { "$type": "fontWeight", "$value": 600 },
+    "bold": { "$type": "fontWeight", "$value": 700 },
+    "extrabold": { "$type": "fontWeight", "$value": 800 }
+  },
+  "line-height": {
+    "display": { "$type": "lineHeight", "$value": 1.0 },
+    "heading": { "$type": "lineHeight", "$value": 1.15 },
+    "body": { "$type": "lineHeight", "$value": 1.6 }
+  },
+  "measure": {
+    "display": { "$type": "dimension", "$value": "22ch" },
+    "body": { "$type": "dimension", "$value": "65ch" }
+  }
+}

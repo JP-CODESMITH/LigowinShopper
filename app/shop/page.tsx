@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import Carti from "../components/cart";
 import Allm from "../shoppage/all";
+import { Eyebrow, IconBox, IconSparkle, IconStar, IconFactory, IconBag, IconTag, IconTruck, IconZap, IconGlobe, IconSearch, IconX, IconChat, IconTrash, IconCheck, Listbox } from "../components/primitives";
 
 interface ProductImage {
   id: string;
@@ -31,15 +32,21 @@ interface Product {
 }
 
 const links = [
-  { name: "All", type: "all", icon: "📦" },
-  { name: "Beauty", type: "beauty", icon: "💄" },
-  { name: "Fragrances", type: "fragrances", icon: "🧴" },
-  { name: "Furniture", type: "furniture", icon: "🛋️" },
-  { name: "Groceries", type: "groceries", icon: "🍎" },
-  { name: "Laptops", type: "laptops", icon: "💻" },
-  { name: "Shirts", type: "mens-shirts", icon: "👔" },
-  { name: "Shoes", type: "mens-shoes", icon: "👟" },
-  { name: "Watches", type: "mens-watches", icon: "⌚" },
+  { name: "All", type: "all", Icon: IconBox },
+  { name: "Beauty", type: "beauty", Icon: IconSparkle },
+  { name: "Fragrances", type: "fragrances", Icon: IconStar },
+  { name: "Furniture", type: "furniture", Icon: IconFactory },
+  { name: "Groceries", type: "groceries", Icon: IconBag },
+  { name: "Laptops", type: "laptops", Icon: IconZap },
+  { name: "Shirts", type: "mens-shirts", Icon: IconTag },
+  { name: "Shoes", type: "mens-shoes", Icon: IconTruck },
+  { name: "Watches", type: "mens-watches", Icon: IconGlobe },
+];
+
+const sortOptions = [
+  { value: "popular", label: "Most Popular" },
+  { value: "low-high", label: "Price: Low to High" },
+  { value: "high-low", label: "Price: High to Low" },
 ];
 
 const Shop = () => {
@@ -47,7 +54,8 @@ const Shop = () => {
   const [currentLink, setCurrentLink] = useState("all");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  
+  const [sort, setSort] = useState("popular");
+
   interface CartItem {
     name: string;
     image: string;
@@ -58,31 +66,52 @@ const Shop = () => {
   const [cartNumber, setCartNumber] = useState(0);
   const [openCart, setOpenCart] = useState(false);
   const [search, setSearch] = useState("");
+  const modalCloseRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCart(savedCart);
-    const totalCount = savedCart.reduce((acc: number, item: CartItem) => acc + (item.quantity || 1), 0);
-    setCartNumber(totalCount);
+    try {
+      const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCart(Array.isArray(savedCart) ? savedCart : []);
+      const totalCount = (Array.isArray(savedCart) ? savedCart : []).reduce((acc: number, item: CartItem) => acc + (item.quantity || 1), 0);
+      setCartNumber(totalCount);
+    } catch { setCart([]); }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    try { localStorage.setItem("cart", JSON.stringify(cart)); } catch {}
     const totalCount = cart.reduce((acc: number, item: CartItem) => acc + (item.quantity || 1), 0);
     setCartNumber(totalCount);
   }, [cart]);
 
+  useEffect(() => {
+    if (!sellect && !openCart) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setSellect(null); setOpenCart(false); }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [sellect, openCart]);
+
+  useEffect(() => {
+    if (sellect) {
+      document.body.style.overflow = "hidden";
+      modalCloseRef.current?.focus();
+    } else if (!openCart) {
+      document.body.style.overflow = "unset";
+    }
+    return () => { if (!openCart) document.body.style.overflow = "unset"; };
+  }, [sellect, openCart]);
+
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      // Fetch products from the NestJS backend running on port 4000
-      const response = await fetch("http://localhost:4000/products");
+      const base = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+      const response = await fetch(`${base}/products`);
       const data = await response.json();
-      // Ensure data is always an array (handles error responses gracefully)
       setProducts(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -116,41 +145,35 @@ const Shop = () => {
     }
   };
 
-  // Remove a cart item entirely
   const removeFromCart = (itemName: string) => {
     setCart(cart.filter((i) => i.name !== itemName));
   };
 
   const handleClose = () => setSellect(null);
 
-  useEffect(() => {
-    if (sellect) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => { document.body.style.overflow = "unset"; };
-  }, [sellect]);
-
   const filteredData = useMemo(() => {
     const query = search.toLowerCase();
-    const filteredProducts = currentLink === "all"
+    const byCategory = currentLink === "all"
       ? products
       : products.filter((item) => item.category?.slug === currentLink);
-    return filteredProducts.filter((item) => {
+    const byQuery = byCategory.filter((item) => {
       const name = item.name?.toLowerCase() || "";
       const description = item.description?.toLowerCase() || "";
       return name.includes(query) || description.includes(query);
     });
-  }, [search, currentLink, products]);
+    const sorted = [...byQuery];
+    if (sort === "low-high") sorted.sort((a, b) => a.price - b.price);
+    if (sort === "high-low") sorted.sort((a, b) => b.price - a.price);
+    return sorted;
+  }, [search, currentLink, products, sort]);
 
   const selectedProduct = filteredData.find((p) => p.images[0]?.url === sellect);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-bg-warm-white text-on-surface font-sans flex items-center justify-center">
+      <div className="min-h-screen bg-bg-warm-white text-on-surface font-sans flex items-center justify-center" role="status" aria-live="polite">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-container mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-2 border-surface-container border-t-primary-container mx-auto mb-4" aria-hidden="true"></div>
           <p className="text-text-muted">Loading products...</p>
         </div>
       </div>
@@ -163,51 +186,48 @@ const Shop = () => {
         <Carti carts={cartNumber} />
       </div>
 
-      {/* Hero Search Banner */}
-      <section className="w-full relative overflow-hidden bg-gradient-to-b from-bg-light-lavender via-bg-soft-cream to-surface px-4 lg:px-6 pt-20 pb-12">
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-lowest shadow-sm mb-4">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-accent-amber animate-pulse"></span>
-            <span className="text-xs uppercase tracking-wider text-secondary font-bold">Verified International Catalogs • Over 40k Items</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight max-w-3xl">
-            Find Something You&apos;ll <span className="text-primary-container">Love</span> ✨
+      {/* Hero Search Banner — left-aligned */}
+      <section className="w-full relative overflow-hidden bg-gradient-to-b from-bg-light-lavender via-bg-soft-cream to-surface px-4 lg:px-6 pt-20 pb-12" aria-labelledby="shop-heading">
+        <div className="max-w-4xl mx-auto flex flex-col items-start text-left relative z-10">
+          <Eyebrow>Verified International Catalogs</Eyebrow>
+          <h1 id="shop-heading" className="mt-2 text-5xl sm:text-6xl font-extrabold tracking-tight leading-none max-w-3xl">
+            Find Something You&apos;ll <span className="text-primary">Love</span>
           </h1>
-          <p className="text-text-muted max-w-2xl mt-3 mb-6 text-sm">
-            Explore thousands of verified global products sourced directly with express international transit.
+          <p className="text-text-muted max-w-2xl mt-3 mb-6 text-base">
+            Thousands of verified global products, sourced directly with tracked international delivery.
           </p>
 
-          {/* Search Bar */}
           <div className="w-full max-w-2xl relative">
-            <div className="flex items-center bg-surface-container-lowest rounded-full p-2 shadow-elevated transition-all focus-within:shadow-card-hover">
-              <div className="pl-4 pr-2 flex items-center text-secondary">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
+            <div className="flex items-center bg-surface-container-lowest rounded-full p-2 shadow-elevated transition-all focus-within:shadow-card-hover border border-outline-variant/20">
+              <div className="pl-4 pr-2 flex items-center text-secondary" aria-hidden="true">
+                <IconSearch size={24} />
               </div>
+              <label htmlFor="shop-search" className="sr-only">Search products</label>
               <input
+                id="shop-search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full bg-transparent text-sm text-on-surface placeholder:text-text-muted focus:outline-none py-2"
                 placeholder="Search electronics, streetwear, sneakers, watches..."
               />
-              <button
-                onClick={() => setSearch("")}
-                className="text-text-muted hover:text-on-surface p-2 transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              {search && (
+                <button
+                  onClick={() => setSearch("")}
+                  aria-label="Clear search"
+                  className="text-text-muted hover:text-on-surface hover:bg-surface-container rounded-full p-2 transition-colors"
+                >
+                  <IconX size={16} />
+                </button>
+              )}
             </div>
-            {/* Trending Keywords */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mt-3 text-xs text-text-muted">
-              <span className="font-bold text-on-surface">🔥 Popular:</span>
+            <div className="flex flex-wrap items-center gap-2 mt-3 text-xs text-text-muted">
+              <span className="font-bold text-on-surface">Popular:</span>
               {["Perfume", "Watch", "Shoes", "Jewelry"].map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setSearch(tag)}
-                  className="px-3 py-1 rounded-full bg-surface-container hover:bg-secondary-fixed hover:text-secondary transition-colors"
+                  aria-pressed={search === tag}
+                  className="px-3 py-1 rounded-full bg-surface-container hover:bg-secondary-fixed active:bg-surface-container-high transition-colors text-on-surface font-semibold"
                 >
                   {tag}
                 </button>
@@ -218,41 +238,41 @@ const Shop = () => {
       </section>
 
       {/* Category Pills Bar */}
-      <section className="w-full bg-surface-container-lowest/80 backdrop-blur-md sticky top-20 z-30 shadow-sm">
+      <section className="w-full bg-surface-container-lowest/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-outline-variant/20" aria-label="Categories">
         <div className="max-w-7xl mx-auto px-4 lg:px-6 py-3 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-2 whitespace-nowrap min-w-max">
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => setCurrentLink(link.type)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-1.5 ${
-                  currentLink === link.type
-                    ? "bg-secondary text-on-secondary shadow-sm"
-                    : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-                }`}
-              >
-                <span>{link.icon}</span>
-                <span>{link.name}</span>
-              </button>
-            ))}
+          <div className="flex items-center gap-2 whitespace-nowrap min-w-max" role="group" aria-label="Filter by category">
+            {links.map((link) => {
+              const active = currentLink === link.type;
+              const LinkIcon = link.Icon;
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => setCurrentLink(link.type)}
+                  aria-pressed={active}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-1.5 min-h-10 ${
+                    active
+                      ? "bg-secondary text-on-secondary shadow-sm"
+                      : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high active:bg-surface-container-highest"
+                  }`}
+                >
+                  <LinkIcon size={16} />
+                  <span>{link.name}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto w-full px-4 lg:px-6 py-8">
-        <div className="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex items-center justify-between mb-6">
+        <div className="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/20 flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <span className="text-lg font-bold text-on-surface">Catalog Results</span>
-            <span className="text-xs text-text-muted bg-surface-container px-2 py-0.5 rounded-full">{filteredData.length} items</span>
+            <span className="text-xs text-text-muted bg-surface-container px-2 py-0.5 rounded-full" aria-live="polite">{filteredData.length} items</span>
           </div>
-          <div className="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full">
-            <span className="text-[10px] text-text-muted uppercase">Sort:</span>
-            <select className="bg-transparent text-xs font-bold text-on-surface focus:outline-none cursor-pointer">
-              <option>Most Popular</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-            </select>
+          <div className="flex items-center bg-surface-container-low px-3 py-1.5 rounded-full">
+            <Listbox label="Sort" options={sortOptions} value={sort} onChange={setSort} id="shop-sort" />
           </div>
         </div>
 
@@ -275,7 +295,9 @@ const Shop = () => {
 
         {filteredData.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-4xl mb-4">🔍</p>
+            <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-text-muted">
+              <IconSearch size={24} />
+            </div>
             <p className="text-lg font-bold text-on-surface">No products found</p>
             <p className="text-sm text-text-muted">Try a different search or category</p>
           </div>
@@ -284,45 +306,45 @@ const Shop = () => {
 
       {/* Product Modal */}
       {sellect && (
-        <>
-          <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" onClick={handleClose} />
+        <div role="dialog" aria-modal="true" aria-label={selectedProduct?.name ?? "Product details"}>
+          <div className="fixed inset-0 z-40 bg-inverse-surface/40 backdrop-blur-sm" onClick={handleClose} aria-hidden="true" />
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-            <div className="relative w-full max-w-4xl bg-surface-container-lowest rounded-2xl shadow-elevated animate-in fade-in zoom-in-95 duration-300" onClick={(e) => e.stopPropagation()}>
-              <button onClick={handleClose} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors">
-                <svg className="w-5 h-5 text-on-surface" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+            <div className="relative w-full max-w-4xl bg-surface-container-lowest rounded-2xl shadow-elevated border border-outline-variant/20" onClick={(e) => e.stopPropagation()}>
+              <button ref={modalCloseRef} onClick={handleClose} aria-label="Close product details" className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest transition-colors">
+                <IconX size={20} />
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative bg-bg-warm-white flex items-center justify-center min-h-[300px] md:min-h-[500px] p-8 rounded-t-2xl md:rounded-t-none md:rounded-l-2xl">
-                  <img src={sellect} alt={selectedProduct?.description || "Product"} className="max-h-80 object-contain" />
+                  {sellect ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={sellect} alt={selectedProduct?.name ?? "Product"} className="max-h-80 object-contain" />
+                  ) : null}
                 </div>
                 <div className="flex flex-col justify-between p-6 md:p-8">
                   <div className="space-y-4">
-                    <h1 className="text-2xl md:text-3xl font-bold text-on-surface">{selectedProduct?.name}</h1>
+                    <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight">{selectedProduct?.name}</h2>
                     <div className="flex items-baseline gap-2 border-b border-outline-variant/20 pb-4">
-                      <span className="text-2xl font-extrabold text-primary-container">₦{selectedProduct?.price.toLocaleString()}</span>
+                      <span className="text-2xl font-extrabold text-primary">₦{selectedProduct?.price.toLocaleString()}</span>
                     </div>
                     <div>
-                      <h2 className="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">Description</h2>
+                      <h3 className="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">Description</h3>
                       <p className="text-text-muted text-sm leading-relaxed">{selectedProduct?.description}</p>
                     </div>
-                    <div className="space-y-2">
-                      <h2 className="text-xs font-bold text-on-surface uppercase tracking-wider">Why Choose This</h2>
-                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-                        <span className="text-accent-emerald font-bold">✓</span>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <IconCheck size={16} className="text-accent-emerald" />
                         <span>Premium Quality Materials</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-                        <span className="text-accent-emerald font-bold">✓</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <IconCheck size={16} className="text-accent-emerald" />
                         <span>Fast & Secure Shipping</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-                        <span className="text-accent-emerald font-bold">✓</span>
+                      </li>
+                      <li className="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <IconCheck size={16} className="text-accent-emerald" />
                         <span>Buyer Protection Guaranteed</span>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
                   </div>
                   <div className="flex flex-col gap-3 mt-6 pt-4 border-t border-outline-variant/20">
                     <button
@@ -332,47 +354,50 @@ const Shop = () => {
                           handleClose();
                         }
                       }}
-                      className="w-full bg-primary-container text-on-primary py-3 rounded-full font-bold hover:bg-primary shadow-btn-primary transition-all"
+                      className="w-full bg-primary text-on-primary py-3 rounded-full font-bold hover:brightness-95 active:brightness-90 shadow-btn-primary transition-all"
                     >
                       Add to Cart
                     </button>
-                    <button onClick={handleClose} className="w-full bg-surface-container text-on-surface py-3 rounded-full font-bold hover:bg-surface-container-high transition-colors">
+                    <button onClick={handleClose} className="w-full bg-transparent border border-outline-variant text-on-surface py-3 rounded-full font-bold hover:bg-surface-container active:bg-surface-container-high transition-colors">
                       Continue Shopping
                     </button>
                   </div>
-                  <div className="mt-3 text-center text-xs font-medium text-accent-emerald bg-bg-light-green py-2 px-3 rounded-lg">
-                    ✓ In Stock — Ships within 2-3 business days
+                  <div className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs font-medium text-accent-emerald bg-bg-light-green py-2 px-3 rounded-lg">
+                    <IconCheck size={14} />
+                    In Stock — Ships within 2-3 business days
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {/* Cart Drawer */}
       {openCart && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-sm">
-          <div className="w-[90%] sm:w-[400px] bg-surface-container-lowest h-full shadow-elevated flex flex-col">
+        <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true" aria-label="Shopping cart">
+          <div className="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm" onClick={() => setOpenCart(false)} aria-hidden="true" />
+          <div className="relative w-[90%] sm:w-[400px] bg-surface-container-lowest h-full shadow-elevated flex flex-col border-l border-outline-variant/20">
             <div className="flex justify-between items-center p-5 border-b border-outline-variant/20">
               <h2 className="text-lg font-bold text-on-surface">Your Cart</h2>
-              <button onClick={() => setOpenCart(false)} className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+              <button onClick={() => setOpenCart(false)} aria-label="Close cart" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high active:bg-surface-container-highest transition-colors">
+                <IconX size={16} />
               </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-5 space-y-3">
               {cart.length === 0 ? (
                 <div className="text-center py-12">
-                  <p className="text-4xl mb-3">🛒</p>
+                  <div className="mx-auto mb-3 w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-text-muted">
+                    <IconBox size={24} />
+                  </div>
                   <p className="text-text-muted">Cart is empty</p>
                 </div>
               ) : (
                 cart.map((item, i) => (
-                  <div key={i} className="flex gap-3 bg-surface-container p-3 rounded-xl">
-                    <img src={item.image} className="w-16 h-16 rounded-lg object-cover" alt="" />
+                  <div key={i} className="flex gap-3 bg-surface-container p-3 rounded-xl border border-outline-variant/20">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.image} className="w-16 h-16 rounded-lg object-cover bg-bg-warm-white" alt={item.name} />
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-on-surface">{item.name}</p>
                       <p className="text-xs text-text-muted">₦{item.price.toLocaleString()}</p>
@@ -380,12 +405,11 @@ const Shop = () => {
                     </div>
                     <button
                       onClick={() => removeFromCart(item.name)}
-                      className="text-text-muted hover:text-red-500 transition-colors shrink-0 self-start"
+                      className="text-text-muted hover:text-error hover:bg-error/10 rounded-full p-1.5 transition-colors shrink-0 self-start"
                       title="Remove item"
+                      aria-label={`Remove ${item.name} from cart`}
                     >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
+                      <IconTrash size={16} />
                     </button>
                   </div>
                 ))
@@ -402,12 +426,14 @@ const Shop = () => {
                     .map((item, i) => `${i + 1}. ${item.name}\nQty: ${item.quantity}\n₦${item.price}`)
                     .join("\n\n");
                   const total = cart.reduce((acc, item) => acc + item.price * (item.quantity || 1), 0);
-                  const text = `🛒 *Ligowin Order*\n\n${message}\n\nTotal: ₦${total}`;
+                  const text = `Ligowin Order\n\n${message}\n\nTotal: ₦${total}`;
                   window.open(`https://wa.me/2349160582481?text=${encodeURIComponent(text)}`);
                 }}
-                className="w-full bg-accent-emerald text-on-primary py-3 rounded-full font-bold hover:bg-accent-emerald/90 shadow-btn-primary transition-all flex items-center justify-center gap-2"
+                disabled={cart.length === 0}
+                className="w-full bg-accent-emerald text-on-primary py-3 rounded-full font-bold hover:brightness-95 active:brightness-90 shadow-btn-primary transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
               >
-                💬 Order via WhatsApp
+                <IconChat size={18} />
+                Order via WhatsApp
               </button>
             </div>
           </div>

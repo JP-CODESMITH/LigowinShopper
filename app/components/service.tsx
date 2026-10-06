@@ -5,7 +5,7 @@ import shippingAnimation from "../animations/shipping.json";
 
 export default function ShippingAnimation() {
   return (
-    <div className="w-80 h-80">
+    <div className="w-full max-w-80 aspect-square" role="img" aria-label="Shipping illustration">
       <Lottie
         animationData={shippingAnimation}
         loop={true}

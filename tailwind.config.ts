@@ -1,3 +1,9 @@
+/**
+ * DEPRECATED under Tailwind v4 — kept for IDE reference only.
+ * Single source of truth is tokens/*.json mirrored in app/globals.css (@theme inline).
+ * Do NOT edit palette here; edit tokens/colors.json instead.
+ * This file is ignored by the v4 build (no @config reference in globals.css).
+ */
 import type { Config } from "tailwindcss";
 import scrollbarHide from "tailwind-scrollbar-hide";
 
@@ -94,7 +100,7 @@ export default {
 
         'trust-green': '#10B981',
         'teal-accent': '#005ac2',
-        'alert-red': '#EF4444',
+        'alert-red': '#ba1a1a', // unified with tokens/error.DEFAULT (was #EF4444)
 
         'text-bright': '#141b2b',
         'text-soft': '#594139',
